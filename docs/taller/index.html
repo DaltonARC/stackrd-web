@@ -12,8 +12,9 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;700;800&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/ecf-demo.css">
 <style>
-:root{--carbon:#17181a;--carbon2:#222427;--acero:#2e3135;--gris:#9aa0a6;--amarillo:#ffc400;--blanco:#f4f4f2;--cond:'Barlow Condensed',Impact,sans-serif}
+:root{--ecf-acento:#17181a;--ecf-acento-tx:#ffc400;--ecf-tinta:#17181a;--ecf-suave:#555;--ecf-borde:#9aa0a6;--ecf-campo:#fff;--ecf-radio:0;--carbon:#17181a;--carbon2:#222427;--acero:#2e3135;--gris:#9aa0a6;--amarillo:#ffc400;--blanco:#f4f4f2;--cond:'Barlow Condensed',Impact,sans-serif}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:Barlow,system-ui,sans-serif;background:var(--carbon);color:var(--blanco);line-height:1.55}
@@ -117,6 +118,12 @@ input:focus{outline:none;border-color:var(--amarillo)}
 footer{border-top:2px solid var(--acero);padding:30px 0;color:var(--gris);font-size:14px}
 footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
 footer a{color:var(--amarillo)}
+.ecfs{padding:0 0 70px}
+.ecfs h2{font-family:var(--cond);font-weight:800;text-transform:uppercase;font-size:clamp(36px,5.5vw,60px);line-height:.95;margin-bottom:28px}
+.ecfs ul{list-style:none;display:grid;grid-template-columns:repeat(3,1fr);border-top:2px solid var(--acero);border-left:2px solid var(--acero)}
+.ecfs li{padding:26px;border-right:2px solid var(--acero);border-bottom:2px solid var(--acero);font-family:var(--cond);font-weight:700;font-size:23px;text-transform:uppercase;letter-spacing:.5px;line-height:1.1}
+.ecfs li::before{content:"■ ";color:var(--amarillo);font-size:14px}
+.ecfs p{margin-top:20px;color:var(--gris);font-size:15px;max-width:640px}
 .js .rv{opacity:0;transform:translateY(30px);transition:opacity .6s,transform .6s}
 .js .rv.in{opacity:1;transform:none}
 @media(max-width:960px){
@@ -129,7 +136,7 @@ footer a{color:var(--amarillo)}
   .ticket{position:static}
 }
 @media(max-width:560px){
-  .servicios,.checks,.campos{grid-template-columns:1fr}
+  .servicios,.checks,.campos,.ecfs ul{grid-template-columns:1fr}
   .vehs{grid-template-columns:1fr 1fr}
   section{padding:70px 0}
   .num{font-size:80px}
@@ -243,6 +250,7 @@ footer a{color:var(--amarillo)}
       <div id="lineas"><div class="lin vacio">Aún no has elegido servicios.</div></div>
       <div class="tot"><span>Estimado</span><b id="total">RD$0</b></div>
       <a class="btn" id="enviar" target="_blank" rel="noopener" aria-disabled="true">Enviar por WhatsApp</a>
+      <div id="ecf"></div>
       <small>Precio estimado. Puede variar según el diagnóstico.</small>
     </aside>
   </div>
@@ -255,8 +263,20 @@ footer a{color:var(--amarillo)}
   </div>
 </div></section>
 
+<section class="ecfs"><div class="wrap">
+  <h2 class="rv">Factura electrónica incluida</h2>
+  <ul>
+    <li class="rv">Comprobantes e-CF de consumo y crédito fiscal</li>
+    <li class="rv">Cálculo automático del ITBIS</li>
+    <li class="rv">PDF y XML listos para enviar</li>
+  </ul>
+  <p>En esta demostración la factura no se envía a la DGII. En tu negocio se conecta al Facturador Gratuito o a un proveedor certificado.</p>
+</div></section>
+
 <footer><div class="wrap"><span>© Rueda Firme Auto Servicio · Santiago</span><span>Página hecha por <a href="https://wa.me/18293390257?text=Hola%2C%20vi%20una%20p%C3%A1gina%20hecha%20por%20StackRD%20y%20quiero%20una." target="_blank" rel="noopener">StackRD</a></span></div></footer>
 
+<script src="../assets/vendor/qrcode.js"></script>
+<script src="../assets/ecf-demo.js"></script>
 <script>
 const WA='18293390257',wa=m=>'https://wa.me/'+WA+'?text='+encodeURIComponent(m),fmt=n=>'RD$'+Math.round(n).toLocaleString('en-US');
 document.querySelectorAll('[data-wa]').forEach(a=>{a.href=wa(a.dataset.wa);a.target='_blank';a.rel='noopener'});
@@ -268,6 +288,9 @@ const servs=[['Cambio de aceite',2200],['Frenos delanteros',3500],['Diagnóstico
 const C=document.getElementById('checks');
 servs.forEach(([n,p],i)=>C.insertAdjacentHTML('beforeend',`<label class="chk"><input type="checkbox" value="${i}"><span>${n}</span><em>desde ${fmt(p)}</em></label>`));
 let f=1,veh='Carro';
+const ECF=EcfDemo.mount(document.getElementById('ecf'),{demo:'taller',negocio:'Rueda Firme Auto Servicio',rnc:'000000003',direccion:'Av. Circunvalación, Santiago de los Caballeros, R.D.',
+ getOrder:()=>{const sel=[...C.querySelectorAll('input:checked')].map(i=>servs[i.value]);
+  return sel.length?{lines:sel.map(s=>({desc:s[0]+' ('+veh+')',qty:1,price:Math.round(s[1]*f*100)/100,gravado:true})),cliente:{nombre:''}}:null}});
 document.getElementById('vehs').onclick=e=>{const b=e.target.closest('.veh');if(!b)return;document.querySelectorAll('.veh').forEach(x=>x.classList.remove('on'));b.classList.add('on');f=+b.dataset.f;veh=b.dataset.n;upd()};
 C.onchange=upd;document.getElementById('marca').oninput=upd;document.getElementById('anio').oninput=upd;
 function upd(){
@@ -276,6 +299,7 @@ function upd(){
   L.innerHTML=sel.length?sel.map(s=>`<div class="lin"><span>${s[0]}</span><b>${fmt(s[1]*f)}</b></div>`).join(''):'<div class="lin vacio">Aún no has elegido servicios.</div>';
   const tot=sel.reduce((a,s)=>a+s[1]*f,0);document.getElementById('total').textContent=fmt(tot);
   const m=document.getElementById('marca').value.trim(),y=document.getElementById('anio').value.trim();
+  ECF.refresh();
   const b=document.getElementById('enviar');b.setAttribute('aria-disabled',sel.length?'false':'true');
   b.href=wa(`Hola, vi la demo de Rueda Firme y quiero cotizar:\nVehículo: ${veh}${m?' · '+m:''}${y?' · '+y:''}\nServicios:\n${sel.map(s=>'• '+s[0]+' ('+fmt(s[1]*f)+')').join('\n')}\nEstimado: ${fmt(tot)}`);
 }

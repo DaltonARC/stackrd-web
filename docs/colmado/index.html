@@ -13,8 +13,9 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Nunito:wght@500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/ecf-demo.css">
 <style>
-:root{--rojo:#e8322b;--rojo2:#c4231d;--amarillo:#ffcc1f;--verde:#1fa35c;--crema:#fff8ec;--tinta:#2b1d14;--gris:#7b6f66;--linea:#f0e4d0;--baloo:'Baloo 2',system-ui,sans-serif}
+:root{--ecf-acento:#1fa35c;--ecf-acento-tx:#fff;--ecf-tinta:#2b1d14;--ecf-suave:#7b6f66;--ecf-borde:#f0e4d0;--ecf-radio:14px;--rojo:#e8322b;--rojo2:#c4231d;--amarillo:#ffcc1f;--verde:#1fa35c;--crema:#fff8ec;--tinta:#2b1d14;--gris:#7b6f66;--linea:#f0e4d0;--baloo:'Baloo 2',system-ui,sans-serif}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:Nunito,system-ui,sans-serif;background:var(--crema);color:var(--tinta);line-height:1.5;padding-bottom:96px}
@@ -122,6 +123,12 @@ footer a{color:var(--rojo)}
 .enviar{display:block;text-align:center;background:var(--verde);color:#fff;border-radius:16px;padding:16px;font-weight:800;font-size:17px;margin-top:18px;box-shadow:0 5px 0 #157a43}
 .enviar[aria-disabled=true]{opacity:.4;pointer-events:none}
 .nota{text-align:center;color:var(--gris);font-size:13px;font-weight:700;margin-top:10px}
+.ecfs{padding:20px 0 60px}
+.ecfs h2{font-family:var(--baloo);font-weight:800;font-size:clamp(32px,5vw,48px);line-height:1;margin-bottom:20px}
+.ecfs ul{list-style:none;display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.ecfs li{background:#fff;border:2.5px solid var(--linea);border-radius:22px;padding:20px 22px;font-weight:800}
+.ecfs li::before{content:"✓";display:inline-grid;place-items:center;width:28px;height:28px;border-radius:50%;background:var(--verde);color:#fff;margin-right:10px;font-size:15px}
+.ecfs p{margin-top:16px;color:var(--gris);font-weight:700;font-size:14.5px;max-width:640px}
 .js .rv{opacity:0;transform:translateY(20px) scale(.98);transition:opacity .5s,transform .5s}
 .js .rv.in{opacity:1;transform:none}
 @media(max-width:760px){
@@ -129,8 +136,9 @@ footer a{color:var(--rojo)}
   .canasta{height:200px}
   .burbuja:nth-child(1){width:110px;height:110px;font-size:60px}
   .burbuja{transform:scale(.8)}
-  .grid{grid-template-columns:1fr 1fr;gap:10px}
-  .pasos,.hrs{grid-template-columns:1fr}
+  .grid{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:10px}
+  .p .pie{flex-wrap:wrap;gap:6px}
+  .pasos,.hrs,.ecfs ul{grid-template-columns:1fr}
   .abierto span{display:none}
   .wrap{padding:0 20px}
   .demo{padding:8px 16px;line-height:1.45;font-size:13px}
@@ -208,6 +216,16 @@ footer a{color:var(--rojo)}
   </div>
 </div></section>
 
+<section class="ecfs"><div class="wrap">
+  <h2 class="rv">Factura electrónica incluida</h2>
+  <ul>
+    <li class="rv">Comprobantes e-CF de consumo y crédito fiscal</li>
+    <li class="rv">Cálculo automático del ITBIS</li>
+    <li class="rv">PDF y XML listos para enviar</li>
+  </ul>
+  <p>En esta demostración la factura no se envía a la DGII. En tu negocio se conecta al Facturador Gratuito o a un proveedor certificado.</p>
+</div></section>
+
 <footer>© Minimarket El Surtido · Santiago de los Caballeros<br>Página hecha por <a href="https://wa.me/18293390257?text=Hola%2C%20vi%20una%20p%C3%A1gina%20hecha%20por%20StackRD%20y%20quiero%20una." target="_blank" rel="noopener">StackRD</a></footer>
 
 <div class="carro" id="carro"><div class="in"><span class="n" id="n">0</span><span class="t"><small>Tu pedido</small><span id="tt">RD$0</span></span><button class="go" id="ver">Ver pedido →</button></div></div>
@@ -223,9 +241,12 @@ footer a{color:var(--rojo)}
     <div class="pagos" id="pagos"><button class="on" type="button">💵 Efectivo</button><button type="button">🏦 Transferencia</button></div>
   </div>
   <a class="enviar" id="enviar" target="_blank" rel="noopener" aria-disabled="true">Enviar pedido por WhatsApp</a>
+  <div id="ecf"></div>
   <p class="nota" id="nota">Escribe tu nombre y dirección para enviar.</p>
 </div></div>
 
+<script src="../assets/vendor/qrcode.js"></script>
+<script src="../assets/ecf-demo.js"></script>
 <script>
 const WA='18293390257',wa=m=>'https://wa.me/'+WA+'?text='+encodeURIComponent(m),fmt=n=>'RD$'+n.toLocaleString('en-US');
 const CATS=[['todo','🧺','Todo'],['viveres','🍚','Víveres'],['bebidas','🥤','Bebidas'],['limpieza','🧼','Limpieza'],['carnes','🥩','Carnes'],['frutas','🥑','Frutas y vegetales']];
@@ -253,6 +274,10 @@ function cambia(i,d){Q[i]=(Q[i]||0)+d;if(Q[i]<=0)delete Q[i];const el=document.g
 G.onclick=e=>{const b=e.target.closest('button[data-i]');if(b)cambia(+b.dataset.i,+b.dataset.d)};
 document.getElementById('lineas').onclick=e=>{const b=e.target.closest('button[data-i]');if(b){cambia(+b.dataset.i,+b.dataset.d);hojaPinta()}};
 const items=()=>Object.keys(Q).map(i=>({x:P[i],q:Q[i]}));
+const EXENTO=/^(Arroz|Habichuelas|Aceite|Pan de|Espaguetis|Huevos|Azúcar|Café|Leche|Pollo|Carne molida|Plátanos|Aguacates|Tomates|Cebollas|Limones)/;
+const ECF=EcfDemo.mount(document.getElementById('ecf'),{demo:'colmado',negocio:'Minimarket El Surtido',rnc:'000000001',direccion:'Santiago de los Caballeros, R.D.',
+ getOrder:()=>{const it=items(),nom=document.getElementById('nom').value.trim(),dir=document.getElementById('dir').value.trim();
+  return it.length&&nom&&dir?{lines:it.map(({x,q})=>({desc:x.n+' ('+x.u+')',qty:q,price:x.p,gravado:!EXENTO.test(x.n)})),cliente:{nombre:nom,direccion:dir}}:null}});
 function resumen(){const it=items(),n=it.reduce((a,b)=>a+b.q,0),t=it.reduce((a,b)=>a+b.q*b.x.p,0);
  document.getElementById('n').textContent=n;document.getElementById('tt').textContent=fmt(t);document.getElementById('carro').classList.toggle('on',n>0);
  if(!n&&hoja.classList.contains('on'))abre(false);hojaPinta()}
@@ -267,7 +292,7 @@ function hojaPinta(){const it=items(),t=it.reduce((a,b)=>a+b.q*b.x.p,0);
  document.getElementById('total').textContent=fmt(t);
  const nom=document.getElementById('nom').value.trim(),dir=document.getElementById('dir').value.trim(),ok=it.length&&nom&&dir;
  const b=document.getElementById('enviar');b.setAttribute('aria-disabled',ok?'false':'true');
- document.getElementById('nota').textContent=ok?'Te confirmamos el pedido y el costo del delivery por WhatsApp.':'Escribe tu nombre y dirección para enviar.';
+ ECF.refresh();document.getElementById('nota').textContent=ok?'Te confirmamos el pedido y el costo del delivery por WhatsApp.':'Escribe tu nombre y dirección para enviar.';
  b.href=wa(`Hola, vi la demo de El Surtido y quiero hacer este pedido:\n${it.map(({x,q})=>`• ${q} x ${x.n} (${x.u}) – ${fmt(x.p*q)}`).join('\n')}\nTotal: ${fmt(t)}\nNombre: ${nom}\nDirección: ${dir}\nPago: ${pago}`)}
 (function(){const n=new Date(),d=n.getDay(),h=n.getHours();const ab=d===0?(h>=8&&h<14):(h>=7&&h<22);const el=document.getElementById('abierto');
  el.querySelector('span').textContent=ab?(d===0?'Abierto hasta las 2:00 p.m.':'Abierto hasta las 10:00 p.m.'):'Cerrado ahora · recibimos pedidos';if(!ab)el.querySelector('i').style.background='#ffd27d'})();
