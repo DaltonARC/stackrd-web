@@ -3,59 +3,325 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>StackRD | Páginas web para negocios</title>
-<meta name="description" content="Páginas web y landing pages para negocios.">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&display=swap" rel="stylesheet">
+<title>StackRD | Páginas web y sistemas para negocios en Santiago</title>
+<meta name="description" content="Diseño y desarrollo de páginas web y sistemas a la medida para negocios en Santiago de los Caballeros. Que tus clientes te encuentren en Google y te escriban directo a WhatsApp.">
+<link rel="canonical" href="https://daltonarc.github.io/stackrd-web/">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="apple-touch-icon" href="favicon.png">
+<meta name="theme-color" content="#f5f5f3">
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_DO">
+<meta property="og:site_name" content="StackRD">
+<meta property="og:title" content="StackRD | Páginas web que convierten visitas en clientes">
+<meta property="og:description" content="Páginas web y sistemas a la medida para negocios. Tus clientes te encuentran en Google y te escriben directo a WhatsApp.">
+<meta property="og:url" content="https://daltonarc.github.io/stackrd-web/">
+<meta property="og:image" content="https://daltonarc.github.io/stackrd-web/og-stackrd.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="StackRD: Stack moderno, resultados reales">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="StackRD | Páginas web que convierten visitas en clientes">
+<meta name="twitter:description" content="Páginas web y sistemas a la medida para negocios. Tus clientes te encuentran en Google y te escriben directo a WhatsApp.">
+<meta name="twitter:image" content="https://daltonarc.github.io/stackrd-web/og-stackrd.png">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "StackRD",
+  "url": "https://daltonarc.github.io/stackrd-web/",
+  "image": "https://daltonarc.github.io/stackrd-web/og-stackrd.png",
+  "telephone": "+18293390257",
+  "description": "Diseño y desarrollo de páginas web y sistemas a la medida para negocios.",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Santiago de los Caballeros",
+    "addressCountry": "DO"
+  },
+  "sameAs": ["https://www.youtube.com/@daltonal"]
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
 <style>
+:root{--tinta:#141414;--papel:#f5f5f3;--linea:#e3e3df;--wa:#25d366;--gris:#555}
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:Inter,system-ui,sans-serif;color:#1a1a1a;background:#f5f5f3;
-background-image:linear-gradient(#e6e6e3 1px,transparent 1px),linear-gradient(90deg,#e6e6e3 1px,transparent 1px);background-size:34px 34px}
-.wrap{max-width:1050px;margin:0 auto;padding:0 22px}
-header{text-align:center;padding:56px 0 30px}
-header img{width:180px;mix-blend-mode:multiply}
-h1{font-size:clamp(30px,5vw,48px);font-weight:800;line-height:1.1;margin:14px 0 12px}
-header p{font-size:18px;color:#555;max-width:580px;margin:0 auto 26px}
-.btn{display:inline-block;background:#1a1a1a;color:#fff;padding:14px 26px;border-radius:999px;font-weight:600;text-decoration:none}
-.btn.wa{background:#25d366}
-h2{font-size:26px;margin:40px 0 18px;text-align:center}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:22px}
-.card{background:#fff;border:2px solid #1a1a1a;border-radius:18px;overflow:hidden;text-decoration:none;color:inherit;box-shadow:6px 6px 0 #1a1a1a;transition:transform .15s}
-.card:hover{transform:translate(-3px,-3px)}
-.prev{height:170px;display:grid;place-items:center;font-size:72px}
-.card div.t{padding:18px 20px}
-.card h3{font-size:19px}
-.card p{font-size:14px;color:#666;margin-top:4px}
-.paquetes{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
-.paq{background:#fff;border:1px solid #ddd;border-radius:16px;padding:24px}
-.paq b{font-size:24px;display:block;margin:6px 0}
-.paq li{font-size:14.5px;color:#555;margin:6px 0 0 18px}
-footer{text-align:center;padding:50px 0 40px;color:#666;font-size:14px}
+html{scroll-behavior:smooth;scroll-padding-top:84px}
+body{font-family:Inter,system-ui,sans-serif;color:var(--tinta);background:var(--papel);
+background-image:linear-gradient(var(--linea) 1px,transparent 1px),linear-gradient(90deg,var(--linea) 1px,transparent 1px);background-size:34px 34px;line-height:1.55}
+a{color:inherit}
+.wrap{max-width:1100px;margin:0 auto;padding:0 22px}
+.tag{font-family:"JetBrains Mono",ui-monospace,monospace;font-weight:700;font-size:12px;letter-spacing:.08em;text-transform:uppercase;display:inline-block;border:2px solid var(--tinta);background:#fff;padding:4px 10px;border-radius:6px}
+h1,h2,h3{font-weight:800;line-height:1.1}
+h2{font-size:clamp(26px,4vw,38px);margin:14px 0 12px}
+.intro{color:var(--gris);font-size:17px;max-width:620px}
+section{padding:72px 0}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-weight:600;font-size:16px;text-decoration:none;padding:13px 24px;border:2px solid var(--tinta);border-radius:12px;background:#fff;color:var(--tinta);box-shadow:0 0 0 var(--tinta);transition:transform .15s,box-shadow .15s}
+.btn:hover{transform:translate(-3px,-3px);box-shadow:5px 5px 0 var(--tinta)}
+.btn.wa{background:var(--wa)}
+.btn.sm{padding:8px 16px;font-size:14px;border-radius:10px;white-space:nowrap}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:50;background:rgba(245,245,243,.94);backdrop-filter:blur(6px);border-bottom:2px solid var(--tinta)}
+nav .wrap{display:flex;align-items:center;gap:22px;height:64px}
+.marca{display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:800;font-size:20px;margin-right:auto}
+.marca img{width:34px;height:34px;border-radius:8px;border:2px solid var(--tinta)}
+nav ul{display:flex;gap:22px;list-style:none}
+nav ul a{font-family:"JetBrains Mono",ui-monospace,monospace;font-weight:500;font-size:13px;text-decoration:none}
+nav ul a:hover{text-decoration:underline;text-underline-offset:4px}
+
+.hero{padding:130px 0 64px}
+.hero .wrap{display:grid;grid-template-columns:1.15fr .85fr;gap:40px;align-items:center}
+.hero h1{font-size:clamp(34px,5.4vw,58px);margin:18px 0 16px}
+.hero p{font-size:18px;color:var(--gris);max-width:540px;margin-bottom:28px}
+.acciones{display:flex;gap:14px;flex-wrap:wrap}
+.hero figure img{width:100%;max-width:380px;display:block;margin:0 auto;mix-blend-mode:multiply}
+
+.trabajos{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-top:34px}
+.trabajo{background:#fff;border:2px solid var(--tinta);border-radius:14px;overflow:hidden;box-shadow:0 0 0 var(--tinta);transition:transform .15s,box-shadow .15s}
+.trabajo:hover{transform:translate(-4px,-4px);box-shadow:8px 8px 0 var(--tinta)}
+.barra{display:flex;align-items:center;gap:6px;padding:9px 12px;border-bottom:2px solid var(--tinta);background:#efefeb}
+.barra i{width:10px;height:10px;border-radius:50%;border:2px solid var(--tinta);background:#fff;display:block}
+.barra span{margin-left:8px;flex:1;font-family:"JetBrains Mono",ui-monospace,monospace;font-size:11px;background:#fff;border:2px solid var(--tinta);border-radius:6px;padding:1px 8px;white-space:nowrap;overflow:hidden}
+.vista{position:relative;aspect-ratio:16/10;overflow:hidden;background:#fff}
+.vista iframe{position:absolute;top:0;left:0;width:1280px;height:800px;border:0;transform-origin:0 0;transform:scale(.25);pointer-events:none}
+.trabajo .pie{padding:16px 18px;display:flex;align-items:center;justify-content:space-between;gap:12px;border-top:2px solid var(--tinta)}
+.trabajo h3{font-size:19px}
+.trabajo .pie p{font-size:13.5px;color:var(--gris)}
+.nota{margin-top:26px;font-size:14.5px;color:var(--gris);border-left:4px solid var(--tinta);padding-left:14px;max-width:640px}
+
+.servicios{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:22px;margin-top:34px}
+.caja{background:#fff;border:2px solid var(--tinta);border-radius:14px;padding:24px;box-shadow:0 0 0 var(--tinta);transition:transform .15s,box-shadow .15s}
+.caja:hover{transform:translate(-4px,-4px);box-shadow:8px 8px 0 var(--tinta)}
+.caja .n{font-family:"JetBrains Mono",ui-monospace,monospace;font-weight:700;font-size:13px;color:var(--gris)}
+.caja h3{font-size:21px;margin:8px 0 8px}
+.caja p{color:var(--gris);font-size:15px;margin-bottom:12px}
+.caja ul{list-style:none}
+.caja li{font-size:14.5px;padding:7px 0 7px 22px;border-top:1px dashed #c9c9c4;position:relative}
+.caja li::before{content:"";position:absolute;left:2px;top:14px;width:8px;height:8px;background:var(--tinta);border-radius:2px}
+
+.incluye{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:34px}
+.incluye div{background:#fff;border:2px solid var(--tinta);border-radius:12px;padding:18px 20px;font-weight:600;display:flex;gap:12px;align-items:center}
+.incluye b{font-family:"JetBrains Mono",ui-monospace,monospace;font-size:12px;background:var(--tinta);color:#fff;border-radius:6px;padding:4px 7px}
+
+.pasos{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;margin-top:34px;counter-reset:p}
+.paso{background:#fff;border:2px solid var(--tinta);border-radius:14px;padding:22px;position:relative}
+.paso::before{counter-increment:p;content:"0" counter(p);font-family:"JetBrains Mono",ui-monospace,monospace;font-weight:700;font-size:13px;background:var(--tinta);color:#fff;border-radius:6px;padding:3px 8px}
+.paso h3{font-size:19px;margin:14px 0 6px}
+.paso p{font-size:14.5px;color:var(--gris)}
+
+.faq{max-width:780px;margin-top:30px}
+details{background:#fff;border:2px solid var(--tinta);border-radius:12px;margin-bottom:14px;box-shadow:0 0 0 var(--tinta);transition:transform .15s,box-shadow .15s}
+details:hover{transform:translate(-3px,-3px);box-shadow:5px 5px 0 var(--tinta)}
+summary{cursor:pointer;font-weight:600;padding:16px 50px 16px 20px;list-style:none;position:relative}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";position:absolute;right:20px;top:50%;transform:translateY(-50%);font-family:"JetBrains Mono",ui-monospace,monospace;font-size:22px}
+details[open] summary::after{content:"\2212"}
+details p{padding:0 20px 18px;color:var(--gris);font-size:15.5px}
+
+.cierre{background:var(--tinta);color:#fff;padding:76px 0;text-align:center;border-top:2px solid var(--tinta)}
+.cierre h2{color:#fff;margin:0 auto 14px;max-width:700px}
+.cierre p{color:#c9c9c4;max-width:560px;margin:0 auto 28px;font-size:17px}
+.cierre .btn{border-color:#fff}
+.cierre .btn:hover{box-shadow:5px 5px 0 #fff}
+
+footer{background:var(--tinta);color:#c9c9c4;border-top:1px solid #333;padding:30px 0;font-size:14px}
+footer .wrap{display:flex;flex-wrap:wrap;gap:12px 28px;align-items:center;justify-content:space-between}
+footer a{color:#fff;margin-left:18px}
+footer a:first-child{margin-left:0}
+
+.flotante{position:fixed;right:16px;bottom:16px;width:44px;height:44px;border-radius:50%;background:var(--wa);border:2px solid var(--tinta);display:grid;place-items:center;box-shadow:0 6px 18px rgba(0,0,0,.25);z-index:60}
+.flotante svg{width:24px;height:24px;fill:#fff}
+
+@media (max-width:900px){
+  .trabajos{grid-template-columns:1fr}
+  .pasos{grid-template-columns:1fr 1fr}
+  .incluye{grid-template-columns:1fr 1fr}
+}
+@media (max-width:760px){
+  nav ul{display:none}
+  .hero{padding:104px 0 44px}
+  .hero .wrap{grid-template-columns:1fr}
+  .hero figure{order:-1}
+  .hero figure img{max-width:220px}
+  section{padding:54px 0}
+}
+@media (max-width:520px){
+  .pasos,.incluye{grid-template-columns:1fr}
+  .acciones .btn{width:100%}
+  footer .wrap{flex-direction:column;align-items:flex-start}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
 </style>
 </head>
 <body>
-<div class="wrap">
-<header>
-  <img src="stackrd-logo.png" alt="StackRD">
-  <h1>Tu negocio en internet,
-  <p>Hago páginas web y landing pages para negocios de Santiago. Tus clientes te encuentran en Google y te escriben directo a WhatsApp.</p>
-  <a class="btn wa" href="https://wa.me/18293390257?text=Hola%2C%20quiero%20una%20p%C3%A1gina%20web%20para%20mi%20negocio." target="_blank" rel="noopener">Escríbeme por WhatsApp</a>
-</header>
 
-<h2>Ejemplos de páginas</h2>
-<div class="grid">
-  <a class="card" href="barberia/"><div class="prev" style="background:linear-gradient(135deg,#141414,#2b2620)">💈</div><div class="t"><h3>Barbería</h3><p>Servicios, precios y reservas por WhatsApp.</p></div></a>
-  <a class="card" href="restaurante/"><div class="prev" style="background:linear-gradient(135deg,#fff1e2,#ffd2a8)">🍲</div><div class="t"><h3>Restaurante</h3><p>Menú del día, delivery y pedidos por WhatsApp.</p></div></a>
-  <a class="card" href="consultorio/"><div class="prev" style="background:linear-gradient(135deg,#e6f6f7,#bfe8eb)">🦷</div><div class="t"><h3>Consultorio</h3><p>Servicios, horario y citas por WhatsApp.</p></div></a>
-</div>
+<nav>
+  <div class="wrap">
+    <a class="marca" href="#inicio"><img src="favicon.png" alt="">StackRD</a>
+    <ul>
+      <li><a href="#trabajos">Trabajos</a></li>
+      <li><a href="#servicios">Servicios</a></li>
+      <li><a href="#proceso">Proceso</a></li>
+      <li><a href="#preguntas">Preguntas</a></li>
+    </ul>
+    <a class="btn wa sm" href="https://wa.me/18293390257?text=Hola%2C%20quiero%20cotizar%20una%20p%C3%A1gina%20web%20para%20mi%20negocio." target="_blank" rel="noopener">Cotizar</a>
+  </div>
+</nav>
 
-<h2>Paquetes</h2>
-<div class="paquetes">
-  <div class="paq">Landing page exprés<b>RD$7,500</b><ul><li>Una página con servicios, fotos y ubicación</li><li>Botón de WhatsApp</li><li>Lista en 48 horas</li></ul></div>
-  <div class="paq">Página web completa<b>Desde RD$15,000</b><ul><li>Hasta 5 secciones</li><li>Formulario de contacto</li><li>Dominio y hosting el primer año</li></ul></div>
-  <div class="paq">Sistema a la medida<b>Según proyecto</b><ul><li>Inventario, citas, ventas</li><li>Reportes</li><li>Hecho para tu negocio</li></ul></div>
-</div>
+<main>
+<section class="hero" id="inicio">
+  <div class="wrap">
+    <div>
+      <span class="tag">Santiago de los Caballeros</span>
+      <h1>Páginas web que convierten visitas en clientes</h1>
+      <p>Diseño y desarrollo de páginas web y sistemas a la medida para negocios, para que tus clientes te encuentren en Google y te escriban directo a WhatsApp.</p>
+      <div class="acciones">
+        <a class="btn wa" href="https://wa.me/18293390257?text=Hola%2C%20quiero%20cotizar%20una%20p%C3%A1gina%20web%20para%20mi%20negocio." target="_blank" rel="noopener">Cotizar por WhatsApp</a>
+        <a class="btn" href="#trabajos">Ver trabajos</a>
+      </div>
+    </div>
+    <figure><img src="stackrd-logo.png" alt="StackRD: Stack moderno, resultados reales"></figure>
+  </div>
+</section>
 
-<footer>StackRD · Stack Moderno, Resultados Reales · Santiago, República Dominicana</footer>
-</div>
+<section id="trabajos">
+  <div class="wrap">
+    <span class="tag">Trabajos</span>
+    <h2>Así se ve una página StackRD</h2>
+    <p class="intro">Tres ejemplos de negocios distintos. Abre cualquiera para recorrerla completa.</p>
+    <div class="trabajos">
+      <article class="trabajo">
+        <div class="barra"><i></i><i></i><i></i><span>barberia</span></div>
+        <div class="vista"><iframe src="barberia/index.html" title="Vista previa de la demo de barbería" loading="lazy" tabindex="-1" aria-hidden="true"></iframe></div>
+        <div class="pie"><div><h3>Barbería</h3><p>Servicios y reservas por WhatsApp.</p></div><a class="btn sm" href="barberia/index.html">Ver demo</a></div>
+      </article>
+      <article class="trabajo">
+        <div class="barra"><i></i><i></i><i></i><span>restaurante</span></div>
+        <div class="vista"><iframe src="restaurante/index.html" title="Vista previa de la demo de restaurante" loading="lazy" tabindex="-1" aria-hidden="true"></iframe></div>
+        <div class="pie"><div><h3>Restaurante</h3><p>Menú, delivery y pedidos por WhatsApp.</p></div><a class="btn sm" href="restaurante/index.html">Ver demo</a></div>
+      </article>
+      <article class="trabajo">
+        <div class="barra"><i></i><i></i><i></i><span>consultorio</span></div>
+        <div class="vista"><iframe src="consultorio/index.html" title="Vista previa de la demo de consultorio" loading="lazy" tabindex="-1" aria-hidden="true"></iframe></div>
+        <div class="pie"><div><h3>Consultorio</h3><p>Servicios, horario y citas por WhatsApp.</p></div><a class="btn sm" href="consultorio/index.html">Ver demo</a></div>
+      </article>
+    </div>
+    <p class="nota">Proyectos de demostración. Cada página se diseña con los colores, fotos y servicios de tu negocio.</p>
+  </div>
+</section>
+
+<section id="servicios">
+  <div class="wrap">
+    <span class="tag">Servicios</span>
+    <h2>Lo que puedo hacer por tu negocio</h2>
+    <p class="intro">Cada proyecto se cotiza según lo que necesitas.</p>
+    <div class="servicios">
+      <div class="caja">
+        <span class="n">01</span>
+        <h3>Landing page</h3>
+        <p>Una sola página enfocada en que tus clientes te contacten.</p>
+        <ul><li>Tus servicios y datos del negocio</li><li>Botón directo a WhatsApp</li><li>Ubicación en el mapa</li></ul>
+      </div>
+      <div class="caja">
+        <span class="n">02</span>
+        <h3>Sitio web completo</h3>
+        <p>Varias secciones para presentar tu negocio con más detalle.</p>
+        <ul><li>Estructura según tu negocio</li><li>Formulario de contacto</li><li>Dominio propio</li></ul>
+      </div>
+      <div class="caja">
+        <span class="n">03</span>
+        <h3>Sistemas a la medida</h3>
+        <p>Herramientas hechas para la forma en que trabaja tu negocio.</p>
+        <ul><li>Inventario, citas y ventas</li><li>Reportes</li><li>Hecho para tu negocio</li></ul>
+      </div>
+      <div class="caja">
+        <span class="n">04</span>
+        <h3>Mantenimiento y soporte</h3>
+        <p>Seguimiento para que tu página siga al día después de publicarla.</p>
+        <ul><li>Cambios de textos, fotos y servicios</li><li>Actualizaciones</li><li>Soporte por WhatsApp</li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="incluye">
+  <div class="wrap">
+    <span class="tag">Qué incluye</span>
+    <h2>Lo que lleva cada página</h2>
+    <div class="incluye">
+      <div><b>01</b>Diseño para celular</div>
+      <div><b>02</b>Contacto por WhatsApp</div>
+      <div><b>03</b>Ubicación en el mapa</div>
+      <div><b>04</b>Carga rápida</div>
+      <div><b>05</b>Preparada para Google</div>
+      <div><b>06</b>Lista para compartir</div>
+    </div>
+  </div>
+</section>
+
+<section id="proceso">
+  <div class="wrap">
+    <span class="tag">Proceso</span>
+    <h2>Cómo trabajamos</h2>
+    <div class="pasos">
+      <div class="paso"><h3>Conversamos</h3><p>Me cuentas de tu negocio, qué ofreces y qué quieres lograr.</p></div>
+      <div class="paso"><h3>Propuesta</h3><p>Te explico qué incluye tu proyecto y te paso la cotización.</p></div>
+      <div class="paso"><h3>Diseño y revisión</h3><p>Preparo tu página, la revisas y ajustamos lo que haga falta.</p></div>
+      <div class="paso"><h3>Publicación</h3><p>Ya aprobada, la dejo publicada y lista para que te encuentren.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="preguntas">
+  <div class="wrap">
+    <span class="tag">Preguntas</span>
+    <h2>Preguntas frecuentes</h2>
+    <div class="faq">
+      <details><summary>¿Cuánto cuesta?</summary><p>Depende de lo que necesites. Escríbeme por WhatsApp, cuéntame de tu negocio y te cotizo.</p></details>
+      <details><summary>¿Qué necesito para empezar?</summary><p>El nombre de tu negocio, los servicios que ofreces, tus datos de contacto y la ubicación. Si tienes logo y fotos, mejor; si no, lo vemos juntos.</p></details>
+      <details><summary>¿Puedo ver la página antes de publicarla?</summary><p>Sí. Te la muestro antes de publicar y hacemos los ajustes que pidas.</p></details>
+      <details><summary>¿Necesito dominio?</summary><p>Un dominio propio, como tunegocio.com, le da más presencia a tu negocio. Si aún no tienes uno, lo definimos en la propuesta.</p></details>
+      <details><summary>¿Cómo es el pago?</summary><p>Se paga un adelanto para iniciar y el resto al entregar, por transferencia o depósito.</p></details>
+      <details><summary>¿Puedo hacer cambios después?</summary><p>Sí. Escríbeme por WhatsApp con lo que quieres cambiar y lo coordinamos.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="cierre">
+  <div class="wrap">
+    <h2>Cuéntame de tu negocio y te cotizo</h2>
+    <p>Escríbeme por WhatsApp y vemos qué página o sistema necesitas.</p>
+    <a class="btn wa" href="https://wa.me/18293390257?text=Hola%2C%20quiero%20cotizar%20una%20p%C3%A1gina%20web%20para%20mi%20negocio." target="_blank" rel="noopener">Escribir por WhatsApp</a>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 StackRD · Stack Moderno, Resultados Reales · Santiago de los Caballeros</span>
+    <span><a href="https://wa.me/18293390257" target="_blank" rel="noopener">WhatsApp</a><a href="https://www.youtube.com/@daltonal" target="_blank" rel="noopener">YouTube</a></span>
+  </div>
+</footer>
+
+<a class="flotante" href="https://wa.me/18293390257?text=Hola%2C%20quiero%20cotizar%20una%20p%C3%A1gina%20web%20para%20mi%20negocio." target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 32 32"><path d="M16 3C8.8 3 3 8.7 3 15.8c0 2.5.7 4.9 2 7L3 29l6.4-2c2 1.1 4.3 1.7 6.6 1.7 7.2 0 13-5.7 13-12.8S23.2 3 16 3zm0 23.4c-2.1 0-4.1-.6-5.9-1.6l-.4-.3-3.8 1.2 1.2-3.7-.3-.4a10.4 10.4 0 0 1-1.7-5.8C5.1 9.9 10 5.2 16 5.2s10.9 4.7 10.9 10.6S22 26.4 16 26.4zm6-7.9c-.3-.2-1.9-.9-2.2-1-.3-.1-.5-.2-.7.2-.2.3-.8 1-1 1.2-.2.2-.4.2-.7.1-.3-.2-1.4-.5-2.6-1.6-1-.9-1.6-1.9-1.8-2.2-.2-.3 0-.5.1-.7l.5-.6c.2-.2.2-.4.3-.6.1-.2 0-.4 0-.6l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-.3.3-1.2 1.1-1.2 2.7s1.2 3.2 1.4 3.4c.2.2 2.4 3.6 5.8 5 .8.4 1.4.6 1.9.7.8.3 1.6.2 2.2.1.7-.1 1.9-.8 2.2-1.5.3-.7.3-1.4.2-1.5-.1-.2-.3-.3-.6-.4z"/></svg></a>
+
+<script>
+(function(){
+  var vistas = document.querySelectorAll('.vista');
+  function ajustar(){
+    vistas.forEach(function(v){
+      var f = v.querySelector('iframe');
+      f.style.transform = 'scale(' + (v.clientWidth / 1280) + ')';
+    });
+  }
+  ajustar();
+  window.addEventListener('resize', ajustar);
+  if (window.ResizeObserver) vistas.forEach(function(v){ new ResizeObserver(ajustar).observe(v); });
+})();
+</script>
 </body>
 </html>
