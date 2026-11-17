@@ -115,11 +115,15 @@ nav ul a:hover{text-decoration:underline;text-underline-offset:4px}
 .barra i{width:10px;height:10px;border-radius:50%;border:2px solid var(--tinta);background:#fff;display:block}
 .barra span{margin-left:8px;flex:1;font-family:"JetBrains Mono",ui-monospace,monospace;font-size:11px;background:#fff;border:2px solid var(--tinta);border-radius:6px;padding:1px 8px;white-space:nowrap;overflow:hidden}
 .vista{position:relative;aspect-ratio:16/10;overflow:hidden;background:#fff}
-.vista iframe{position:absolute;top:0;left:0;width:1280px;height:800px;border:0;transform-origin:0 0;transform:translateY(0) scale(var(--s,.25));pointer-events:none;transition:transform .5s ease}
+.vista img{display:block;width:100%;height:auto;transition:transform .5s ease}
 @media (hover:hover) and (pointer:fine){
-  .js .vista iframe{height:1600px}
-  .js .trabajo:hover .vista iframe,.js .trabajo:focus-within .vista iframe{transform:translateY(calc(var(--s,.25) * -800px)) scale(var(--s,.25));transition-duration:.7s}
+  .trabajo:hover .vista img,.trabajo:focus-within .vista img{transform:translateY(-9.0909%);transition-duration:.7s}
 }
+.filtros{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
+.filtros button{font:inherit;font-weight:600;font-size:14px;padding:8px 16px;border:2px solid var(--tinta);border-radius:999px;background:#fff;color:var(--tinta);cursor:pointer;transition:background .15s,color .15s}
+.filtros button:hover{background:#efefeb}
+.filtros button[aria-pressed="true"]{background:var(--tinta);color:#fff}
+.trabajo[hidden]{display:none}
 .trabajo .pie{padding:16px 18px;display:flex;align-items:center;justify-content:space-between;gap:12px;border-top:2px solid var(--tinta)}
 .trabajo h3{font-size:19px}
 .trabajo .pie p{font-size:13.5px;color:var(--gris)}
@@ -238,22 +242,58 @@ footer a:first-child{margin-left:0}
   <div class="wrap">
     <span class="tag">Trabajos</span>
     <h2>Así se ve una página StackRD</h2>
-    <p class="intro">Tres ejemplos de negocios distintos. Abre cualquiera para recorrerla completa.</p>
+    <p class="intro">Nueve ejemplos de negocios distintos. Abre cualquiera para recorrerla completa.</p>
+    <div class="filtros" role="group" aria-label="Filtrar trabajos">
+      <button type="button" data-f="todos" aria-pressed="true">Todos</button>
+      <button type="button" data-f="servicios" aria-pressed="false">Servicios</button>
+      <button type="button" data-f="comercio" aria-pressed="false">Comercio</button>
+      <button type="button" data-f="salud" aria-pressed="false">Salud y belleza</button>
+    </div>
     <div class="trabajos">
-      <article class="trabajo">
+      <article class="trabajo" data-cat="servicios">
         <div class="barra"><i></i><i></i><i></i><span>barberia</span></div>
-        <div class="vista"><iframe src="barberia/index.html" title="Vista previa de la demo de barbería" loading="lazy" tabindex="-1" aria-hidden="true"></iframe></div>
+        <div class="vista"><img src="img/trabajos/barberia.webp" width="1280" height="880" loading="lazy" alt="Vista previa de la demo de barbería"></div>
         <div class="pie"><div><h3>Barbería</h3><p>Servicios y reservas por WhatsApp.</p></div><a class="btn sm" href="barberia/index.html">Ver demo</a></div>
       </article>
-      <article class="trabajo">
+      <article class="trabajo" data-cat="comercio">
         <div class="barra"><i></i><i></i><i></i><span>restaurante</span></div>
-        <div class="vista"><iframe src="restaurante/index.html" title="Vista previa de la demo de restaurante" loading="lazy" tabindex="-1" aria-hidden="true"></iframe></div>
+        <div class="vista"><img src="img/trabajos/restaurante.webp" width="1280" height="880" loading="lazy" alt="Vista previa de la demo de restaurante"></div>
         <div class="pie"><div><h3>Restaurante</h3><p>Menú, delivery y pedidos por WhatsApp.</p></div><a class="btn sm" href="restaurante/index.html">Ver demo</a></div>
       </article>
-      <article class="trabajo">
+      <article class="trabajo" data-cat="servicios">
         <div class="barra"><i></i><i></i><i></i><span>consultorio</span></div>
-        <div class="vista"><iframe src="consultorio/index.html" title="Vista previa de la demo de consultorio" loading="lazy" tabindex="-1" aria-hidden="true"></iframe></div>
+        <div class="vista"><img src="img/trabajos/consultorio.webp" width="1280" height="880" loading="lazy" alt="Vista previa de la demo de consultorio"></div>
         <div class="pie"><div><h3>Consultorio</h3><p>Servicios, horario y citas por WhatsApp.</p></div><a class="btn sm" href="consultorio/index.html">Ver demo</a></div>
+      </article>
+      <article class="trabajo" data-cat="salud">
+        <div class="barra"><i></i><i></i><i></i><span>spa</span></div>
+        <div class="vista"><img src="img/trabajos/spa.webp" width="1280" height="880" loading="lazy" alt="Vista previa de la demo de Bella Esencia"></div>
+        <div class="pie"><div><h3>Bella Esencia</h3><p>Reservas con total.</p></div><a class="btn sm" href="spa/index.html">Ver demo</a></div>
+      </article>
+      <article class="trabajo" data-cat="servicios">
+        <div class="barra"><i></i><i></i><i></i><span>taller</span></div>
+        <div class="vista"><img src="img/trabajos/taller.webp" width="1280" height="880" loading="lazy" alt="Vista previa de la demo de Rueda Firme"></div>
+        <div class="pie"><div><h3>Rueda Firme</h3><p>Cotizador de servicios.</p></div><a class="btn sm" href="taller/index.html">Ver demo</a></div>
+      </article>
+      <article class="trabajo" data-cat="comercio">
+        <div class="barra"><i></i><i></i><i></i><span>tienda</span></div>
+        <div class="vista"><img src="img/trabajos/tienda.webp" width="1280" height="880" loading="lazy" alt="Vista previa de la demo de Nativa Studio"></div>
+        <div class="pie"><div><h3>Nativa Studio</h3><p>Catálogo con carrito.</p></div><a class="btn sm" href="tienda/index.html">Ver demo</a></div>
+      </article>
+      <article class="trabajo" data-cat="salud">
+        <div class="barra"><i></i><i></i><i></i><span>gimnasio</span></div>
+        <div class="vista"><img src="img/trabajos/gimnasio.webp" width="1280" height="880" loading="lazy" alt="Vista previa de la demo de Forja Fitness"></div>
+        <div class="pie"><div><h3>Forja Fitness</h3><p>Horario de clases y planes.</p></div><a class="btn sm" href="gimnasio/index.html">Ver demo</a></div>
+      </article>
+      <article class="trabajo" data-cat="servicios">
+        <div class="barra"><i></i><i></i><i></i><span>inmobiliaria</span></div>
+        <div class="vista"><img src="img/trabajos/inmobiliaria.webp" width="1280" height="880" loading="lazy" alt="Vista previa de la demo de Valle Alto"></div>
+        <div class="pie"><div><h3>Valle Alto</h3><p>Buscador de propiedades.</p></div><a class="btn sm" href="inmobiliaria/index.html">Ver demo</a></div>
+      </article>
+      <article class="trabajo" data-cat="comercio">
+        <div class="barra"><i></i><i></i><i></i><span>colmado</span></div>
+        <div class="vista"><img src="img/trabajos/colmado.webp" width="1280" height="880" loading="lazy" alt="Vista previa de la demo de El Surtido"></div>
+        <div class="pie"><div><h3>El Surtido</h3><p>Pedidos con delivery.</p></div><a class="btn sm" href="colmado/index.html">Ver demo</a></div>
       </article>
     </div>
     <p class="nota">Proyectos de demostración. Cada página se diseña con los colores, fotos y servicios de tu negocio.</p>
@@ -357,15 +397,15 @@ footer a:first-child{margin-left:0}
 
 <script>
 (function(){
-  var vistas = document.querySelectorAll('.vista');
-  function ajustar(){
-    vistas.forEach(function(v){
-      v.querySelector('iframe').style.setProperty('--s', v.clientWidth / 1280);
+  var botones = document.querySelectorAll('.filtros button');
+  var tarjetas = document.querySelectorAll('.trabajo');
+  botones.forEach(function(b){
+    b.addEventListener('click', function(){
+      var f = b.getAttribute('data-f');
+      botones.forEach(function(x){ x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
+      tarjetas.forEach(function(t){ t.hidden = f !== 'todos' && t.getAttribute('data-cat') !== f; });
     });
-  }
-  ajustar();
-  window.addEventListener('resize', ajustar);
-  if (window.ResizeObserver) vistas.forEach(function(v){ new ResizeObserver(ajustar).observe(v); });
+  });
 
   var nav = document.querySelector('nav');
   var pend = false;
