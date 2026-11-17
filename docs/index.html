@@ -88,6 +88,12 @@ nav ul a:hover{text-decoration:underline;text-underline-offset:4px}
 .hero p{font-size:18px;color:var(--gris);max-width:540px;margin-bottom:28px}
 .acciones{display:flex;gap:14px;flex-wrap:wrap}
 .hero figure img{width:100%;max-width:380px;display:block;margin:0 auto;mix-blend-mode:multiply}
+.codigo{display:block;max-width:380px;margin:16px auto 0;background:#161616;color:#d8d8d2;font:500 13px/1.6 "JetBrains Mono",ui-monospace,monospace;border-radius:12px;padding:14px 16px;text-align:left;white-space:pre;overflow:hidden}
+.codigo .k{color:#ffd43b}
+.codigo .v{color:#8fd3a6}
+.codigo .h{visibility:hidden}
+.codigo .cur{display:inline-block;width:7px;height:1em;vertical-align:text-bottom;background:#d8d8d2;animation:parpadea 1s steps(1) infinite}
+@keyframes parpadea{50%{opacity:0}}
 .sub{position:relative;isolation:isolate;display:inline-block}
 .sub::after{content:"";position:absolute;left:0;right:0;bottom:.04em;height:.28em;background:var(--amarillo);z-index:-1;transform-origin:left center}
 
@@ -98,6 +104,7 @@ nav ul a:hover{text-decoration:underline;text-underline-offset:4px}
 .js .e{animation:entra .5s cubic-bezier(.2,.7,.2,1) calc(var(--i) * 100ms) both}
 .js .sub::after{animation:subraya .5s ease-out .65s both}
 .js .hero figure img{animation:entra .5s cubic-bezier(.2,.7,.2,1) .4s both,flota 4s ease-in-out .9s infinite}
+.js .codigo{animation:entra .5s cubic-bezier(.2,.7,.2,1) .4s both}
 .js .rv{opacity:0;transform:translateY(16px);transition:opacity .5s ease,transform .5s ease}
 .js .rv.vis{opacity:1;transform:none}
 
@@ -219,7 +226,11 @@ footer a:first-child{margin-left:0}
         <a class="btn" href="#trabajos">Ver trabajos</a>
       </div>
     </div>
-    <figure><img src="stackrd-logo.png" alt="StackRD: Stack moderno, resultados reales"></figure>
+    <figure><img src="stackrd-logo.png" alt="StackRD: Stack moderno, resultados reales"><pre class="codigo"><code><span class="k">const</span> negocio = {
+  google: <span class="v">true</span>,
+  whatsapp: <span class="v">true</span>,
+  clientes: <span class="v">"más"</span>
+};</code></pre></figure>
   </div>
 </section>
 
@@ -368,6 +379,38 @@ footer a:first-child{margin-left:0}
   revisar();
 
   if (!document.documentElement.classList.contains('js')) return;
+
+  var code = document.querySelector('.codigo code');
+  if (code){
+    var cs = [];
+    (function envolver(n){
+      Array.prototype.slice.call(n.childNodes).forEach(function(c){
+        if (c.nodeType === 3){
+          var fr = document.createDocumentFragment();
+          c.textContent.split('').forEach(function(ch){
+            var s = document.createElement('span');
+            s.className = 'h';
+            s.textContent = ch;
+            fr.appendChild(s);
+            cs.push(s);
+          });
+          n.replaceChild(fr, c);
+        } else envolver(c);
+      });
+    })(code);
+    var cur = document.createElement('span');
+    cur.className = 'cur';
+    cs[0].parentNode.insertBefore(cur, cs[0]);
+    var i = 0;
+    setTimeout(function(){
+      var t = setInterval(function(){
+        var s = cs[i++];
+        s.classList.remove('h');
+        s.parentNode.insertBefore(cur, s.nextSibling);
+        if (i >= cs.length) clearInterval(t);
+      }, 40);
+    }, 900);
+  }
 
   if ('IntersectionObserver' in window){
     var items = document.querySelectorAll('section:not(.hero) h2,.trabajo,.caja,.incluye > div,.paso,.faq details');
