@@ -130,6 +130,8 @@ footer a{color:var(--n);font-weight:700}
 .ecfs ul{list-style:none;display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
 .ecfs li{background:var(--g);border-radius:20px;padding:24px;font-weight:500;font-size:16px}
 .ecfs li::before{content:"✓";display:block;font-family:var(--syne);font-weight:800;font-size:26px;color:var(--acento);margin-bottom:6px}
+.ver-ej{border:0;cursor:pointer;font-family:inherit;width:100%;max-width:420px;justify-content:center;min-height:60px;font-size:17px}
+.ecfs .ver-nota{margin:14px 0 28px}
 .ecfs p{margin-top:20px;color:var(--m);font-size:14.5px;max-width:640px}
 .js .rv{opacity:0;transform:translateY(22px);transition:opacity .7s,transform .7s}
 .js .rv.in{opacity:1;transform:none}
@@ -260,8 +262,10 @@ footer a{color:var(--n);font-weight:700}
   </div>
 </div></section>
 
-<section class="ecfs"><div class="wrap">
+<section class="ecfs" id="factura"><div class="wrap">
   <h2 class="rv">Factura electrónica incluida</h2>
+  <button type="button" class="cta ver-ej" id="verej">Ver factura de ejemplo</button>
+  <p class="ver-nota">O arma tu propio pedido arriba y genera la factura al final.</p>
   <ul>
     <li class="rv">Comprobantes e-CF de consumo y crédito fiscal</li>
     <li class="rv">Cálculo automático del ITBIS</li>
@@ -340,8 +344,13 @@ const abrir=v=>{cajon.classList.toggle('on',v);velo.classList.toggle('on',v)};
 document.getElementById('abrir').onclick=()=>abrir(true);document.getElementById('cerrar').onclick=()=>abrir(false);velo.onclick=()=>abrir(false);
 document.addEventListener('keydown',e=>{if(e.key==='Escape')abrir(false)});
 const I=document.getElementById('items');
-const ECF=EcfDemo.mount(document.getElementById('ecf'),{demo:'tienda',negocio:'Nativa Studio',rnc:'000000002',direccion:'Santiago de los Caballeros, R.D.',
- getOrder:()=>cart.length?{lines:cart.map(c=>({desc:c.x.n+' · Talla '+c.t+' · '+CN[c.x.col[c.c]],qty:c.q,price:c.x.p,gravado:true})),cliente:{nombre:document.getElementById('nombre').value.trim()}}:null});
+const ECF_OPTS={demo:'tienda',negocio:'Nativa Studio',rnc:'000000002',direccion:'Santiago de los Caballeros, R.D.'};
+document.getElementById('verej').onclick=()=>EcfDemo.generar(ECF_OPTS,{lines:[
+ {desc:'Camisa Lino Caribe · Talla M · '+CN['#ff5a36'],qty:1,price:1650,gravado:true},
+ {desc:'Bolso Tejido Playa · Talla Único · '+CN['#d8c27a'],qty:1,price:1350,gravado:true}],
+ cliente:{nombre:'Consumidor final'}},'');
+const ECF=EcfDemo.mount(document.getElementById('ecf'),Object.assign({},ECF_OPTS,{
+ getOrder:()=>cart.length?{lines:cart.map(c=>({desc:c.x.n+' · Talla '+c.t+' · '+CN[c.x.col[c.c]],qty:c.q,price:c.x.p,gravado:true})),cliente:{nombre:document.getElementById('nombre').value.trim()}}:null}));
 I.onclick=e=>{const b=e.target.closest('button');if(!b)return;const c=cart[b.dataset.k];c.q+=+b.dataset.d;if(c.q<1)cart.splice(b.dataset.k,1);pintar()};
 document.getElementById('nombre').oninput=pintar;document.getElementById('entrega').onchange=pintar;
 function pintar(){

@@ -128,6 +128,9 @@ footer a{color:var(--rojo)}
 .ecfs ul{list-style:none;display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
 .ecfs li{background:#fff;border:2.5px solid var(--linea);border-radius:22px;padding:20px 22px;font-weight:800}
 .ecfs li::before{content:"✓";display:inline-grid;place-items:center;width:28px;height:28px;border-radius:50%;background:var(--verde);color:#fff;margin-right:10px;font-size:15px}
+.ver-ej{display:block;width:100%;max-width:420px;min-height:60px;background:var(--verde);color:#fff;border:0;border-radius:18px;font-family:var(--baloo);font-weight:800;font-size:24px;cursor:pointer;box-shadow:0 5px 0 #15803f;margin-bottom:12px}
+.ver-ej:active{transform:translateY(3px);box-shadow:0 2px 0 #15803f}
+.ecfs .ver-nota{margin:0 0 24px}
 .ecfs p{margin-top:16px;color:var(--gris);font-weight:700;font-size:14.5px;max-width:640px}
 .js .rv{opacity:0;transform:translateY(20px) scale(.98);transition:opacity .5s,transform .5s}
 .js .rv.in{opacity:1;transform:none}
@@ -216,8 +219,10 @@ footer a{color:var(--rojo)}
   </div>
 </div></section>
 
-<section class="ecfs"><div class="wrap">
+<section class="ecfs" id="factura"><div class="wrap">
   <h2 class="rv">Factura electrónica incluida</h2>
+  <button type="button" class="ver-ej" id="verej">Ver factura de ejemplo</button>
+  <p class="ver-nota">O arma tu propio pedido arriba y genera la factura al final.</p>
   <ul>
     <li class="rv">Comprobantes e-CF de consumo y crédito fiscal</li>
     <li class="rv">Cálculo automático del ITBIS</li>
@@ -275,9 +280,15 @@ G.onclick=e=>{const b=e.target.closest('button[data-i]');if(b)cambia(+b.dataset.
 document.getElementById('lineas').onclick=e=>{const b=e.target.closest('button[data-i]');if(b){cambia(+b.dataset.i,+b.dataset.d);hojaPinta()}};
 const items=()=>Object.keys(Q).map(i=>({x:P[i],q:Q[i]}));
 const EXENTO=/^(Arroz|Habichuelas|Aceite|Pan de|Espaguetis|Huevos|Azúcar|Café|Leche|Pollo|Carne molida|Plátanos|Aguacates|Tomates|Cebollas|Limones)/;
-const ECF=EcfDemo.mount(document.getElementById('ecf'),{demo:'colmado',negocio:'Minimarket El Surtido',rnc:'000000001',direccion:'Santiago de los Caballeros, R.D.',
+const ECF_OPTS={demo:'colmado',negocio:'Minimarket El Surtido',rnc:'000000001',direccion:'Santiago de los Caballeros, R.D.'};
+document.getElementById('verej').onclick=()=>EcfDemo.generar(ECF_OPTS,{lines:[
+ {desc:'Arroz selecto (5 lb)',qty:2,price:225,gravado:false},
+ {desc:'Cerveza (Pack de 6)',qty:1,price:650,gravado:true},
+ {desc:'Aguacates (2 unidades)',qty:1,price:110,gravado:false}],
+ cliente:{nombre:'María Pérez',direccion:'Los Jardines, Santiago'}},'');
+const ECF=EcfDemo.mount(document.getElementById('ecf'),Object.assign({},ECF_OPTS,{
  getOrder:()=>{const it=items(),nom=document.getElementById('nom').value.trim(),dir=document.getElementById('dir').value.trim();
-  return it.length&&nom&&dir?{lines:it.map(({x,q})=>({desc:x.n+' ('+x.u+')',qty:q,price:x.p,gravado:!EXENTO.test(x.n)})),cliente:{nombre:nom,direccion:dir}}:null}});
+  return it.length&&nom&&dir?{lines:it.map(({x,q})=>({desc:x.n+' ('+x.u+')',qty:q,price:x.p,gravado:!EXENTO.test(x.n)})),cliente:{nombre:nom,direccion:dir}}:null}}));
 function resumen(){const it=items(),n=it.reduce((a,b)=>a+b.q,0),t=it.reduce((a,b)=>a+b.q*b.x.p,0);
  document.getElementById('n').textContent=n;document.getElementById('tt').textContent=fmt(t);document.getElementById('carro').classList.toggle('on',n>0);
  if(!n&&hoja.classList.contains('on'))abre(false);hojaPinta()}

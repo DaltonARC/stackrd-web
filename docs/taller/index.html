@@ -123,6 +123,8 @@ footer a{color:var(--amarillo)}
 .ecfs ul{list-style:none;display:grid;grid-template-columns:repeat(3,1fr);border-top:2px solid var(--acero);border-left:2px solid var(--acero)}
 .ecfs li{padding:26px;border-right:2px solid var(--acero);border-bottom:2px solid var(--acero);font-family:var(--cond);font-weight:700;font-size:23px;text-transform:uppercase;letter-spacing:.5px;line-height:1.1}
 .ecfs li::before{content:"■ ";color:var(--amarillo);font-size:14px}
+.ver-ej{border:0;cursor:pointer;width:100%;max-width:420px;justify-content:center;min-height:60px;font-size:24px}
+.ecfs .ver-nota{margin:14px 0 28px}
 .ecfs p{margin-top:20px;color:var(--gris);font-size:15px;max-width:640px}
 .js .rv{opacity:0;transform:translateY(30px);transition:opacity .6s,transform .6s}
 .js .rv.in{opacity:1;transform:none}
@@ -263,8 +265,10 @@ footer a{color:var(--amarillo)}
   </div>
 </div></section>
 
-<section class="ecfs"><div class="wrap">
+<section class="ecfs" id="factura"><div class="wrap">
   <h2 class="rv">Factura electrónica incluida</h2>
+  <button type="button" class="btn ver-ej" id="verej">Ver factura de ejemplo</button>
+  <p class="ver-nota">O arma tu propio pedido arriba y genera la factura al final.</p>
   <ul>
     <li class="rv">Comprobantes e-CF de consumo y crédito fiscal</li>
     <li class="rv">Cálculo automático del ITBIS</li>
@@ -288,9 +292,14 @@ const servs=[['Cambio de aceite',2200],['Frenos delanteros',3500],['Diagnóstico
 const C=document.getElementById('checks');
 servs.forEach(([n,p],i)=>C.insertAdjacentHTML('beforeend',`<label class="chk"><input type="checkbox" value="${i}"><span>${n}</span><em>desde ${fmt(p)}</em></label>`));
 let f=1,veh='Carro';
-const ECF=EcfDemo.mount(document.getElementById('ecf'),{demo:'taller',negocio:'Rueda Firme Auto Servicio',rnc:'000000003',direccion:'Av. Circunvalación, Santiago de los Caballeros, R.D.',
+const ECF_OPTS={demo:'taller',negocio:'Rueda Firme Auto Servicio',rnc:'000000003',direccion:'Av. Circunvalación, Santiago de los Caballeros, R.D.'};
+document.getElementById('verej').onclick=()=>EcfDemo.generar(ECF_OPTS,{lines:[
+ {desc:'Cambio de aceite (Carro)',qty:1,price:2200,gravado:true},
+ {desc:'Lavado completo (Carro)',qty:1,price:650,gravado:true}],
+ cliente:{nombre:'Consumidor final'}},'');
+const ECF=EcfDemo.mount(document.getElementById('ecf'),Object.assign({},ECF_OPTS,{
  getOrder:()=>{const sel=[...C.querySelectorAll('input:checked')].map(i=>servs[i.value]);
-  return sel.length?{lines:sel.map(s=>({desc:s[0]+' ('+veh+')',qty:1,price:Math.round(s[1]*f*100)/100,gravado:true})),cliente:{nombre:''}}:null}});
+  return sel.length?{lines:sel.map(s=>({desc:s[0]+' ('+veh+')',qty:1,price:Math.round(s[1]*f*100)/100,gravado:true})),cliente:{nombre:''}}:null}}));
 document.getElementById('vehs').onclick=e=>{const b=e.target.closest('.veh');if(!b)return;document.querySelectorAll('.veh').forEach(x=>x.classList.remove('on'));b.classList.add('on');f=+b.dataset.f;veh=b.dataset.n;upd()};
 C.onchange=upd;document.getElementById('marca').oninput=upd;document.getElementById('anio').oninput=upd;
 function upd(){
