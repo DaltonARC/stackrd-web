@@ -109,22 +109,23 @@ nav ul a:hover{text-decoration:underline;text-underline-offset:4px}
 .js .rv.vis{opacity:1;transform:none}
 
 .trabajos{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-top:34px}
-.trabajo{background:#fff;border:2px solid var(--tinta);border-radius:14px;overflow:hidden;box-shadow:0 0 0 var(--tinta);transition:transform .15s,box-shadow .15s}
+.trabajo{display:flex;flex-direction:column;background:#fff;border:2px solid var(--tinta);border-radius:14px;overflow:hidden;box-shadow:0 0 0 var(--tinta);transition:transform .15s,box-shadow .15s}
 .trabajo:hover{transform:translate(-4px,-4px);box-shadow:8px 8px 0 var(--tinta)}
 .barra{display:flex;align-items:center;gap:6px;padding:9px 12px;border-bottom:2px solid var(--tinta);background:#efefeb}
 .barra i{width:10px;height:10px;border-radius:50%;border:2px solid var(--tinta);background:#fff;display:block}
 .barra span{margin-left:8px;flex:1;font-family:"JetBrains Mono",ui-monospace,monospace;font-size:11px;background:#fff;border:2px solid var(--tinta);border-radius:6px;padding:1px 8px;white-space:nowrap;overflow:hidden}
-.vista{position:relative;aspect-ratio:16/10;overflow:hidden;background:#fff}
-.vista img{display:block;width:100%;height:auto;transition:transform .5s ease}
+.vista{position:relative;flex:none;aspect-ratio:16/10;overflow:hidden;background:#fff}
+.vista img{display:block;width:100%;height:auto}
 @media (hover:hover) and (pointer:fine){
-  .trabajo:hover .vista img,.trabajo:focus-within .vista img{transform:translateY(-9.0909%);transition-duration:.7s}
+  .vista img{transition:transform 2.5s ease-in-out}
+  .trabajo:hover .vista img,.trabajo:focus-within .vista img{transform:translateY(-50%)}
 }
 .filtros{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
 .filtros button{font:inherit;font-weight:600;font-size:14px;padding:8px 16px;border:2px solid var(--tinta);border-radius:999px;background:#fff;color:var(--tinta);cursor:pointer;transition:background .15s,color .15s}
 .filtros button:hover{background:#efefeb}
 .filtros button[aria-pressed="true"]{background:var(--tinta);color:#fff}
 .trabajo[hidden]{display:none}
-.trabajo .pie{padding:16px 18px;display:flex;align-items:center;justify-content:space-between;gap:12px;border-top:2px solid var(--tinta)}
+.trabajo .pie{flex:1;padding:16px 18px;display:flex;align-items:center;justify-content:space-between;gap:12px;border-top:2px solid var(--tinta)}
 .trabajo h3{font-size:19px}
 .trabajo .pie p{font-size:13.5px;color:var(--gris)}
 .nota{margin-top:26px;font-size:14.5px;color:var(--gris);border-left:4px solid var(--tinta);padding-left:14px;max-width:640px}
@@ -252,47 +253,47 @@ footer a:first-child{margin-left:0}
     <div class="trabajos">
       <article class="trabajo" data-cat="servicios">
         <div class="barra"><i></i><i></i><i></i><span>barberia</span></div>
-        <div class="vista"><img src="img/trabajos/barberia.webp" width="1280" height="880" loading="lazy" alt="Vista previa de la demo de barbería"></div>
-        <div class="pie"><div><h3>Barbería</h3><p>Servicios y reservas por WhatsApp.</p></div><a class="btn sm" href="barberia/index.html">Ver demo</a></div>
+        <div class="vista"><img src="img/trabajos/barberia.webp" width="1280" height="2316" loading="lazy" alt="Vista previa de la demo de Barbería Filo Fino"></div>
+        <div class="pie"><div><h3>Barbería Filo Fino</h3><p>Reservas por WhatsApp.</p></div><a class="btn sm" href="barberia/index.html">Ver demo</a></div>
       </article>
       <article class="trabajo" data-cat="comercio">
         <div class="barra"><i></i><i></i><i></i><span>restaurante</span></div>
-        <div class="vista"><img src="img/trabajos/restaurante.webp" width="1280" height="880" loading="lazy" alt="Vista previa de la demo de restaurante"></div>
-        <div class="pie"><div><h3>Restaurante</h3><p>Menú, delivery y pedidos por WhatsApp.</p></div><a class="btn sm" href="restaurante/index.html">Ver demo</a></div>
+        <div class="vista"><img src="img/trabajos/restaurante.webp" width="1280" height="2341" loading="lazy" alt="Vista previa de la demo de Sazón de la Loma"></div>
+        <div class="pie"><div><h3>Sazón de la Loma</h3><p>Menú y pedidos por WhatsApp.</p></div><a class="btn sm" href="restaurante/index.html">Ver demo</a></div>
       </article>
       <article class="trabajo" data-cat="servicios">
         <div class="barra"><i></i><i></i><i></i><span>consultorio</span></div>
-        <div class="vista"><img src="img/trabajos/consultorio.webp" width="1280" height="880" loading="lazy" alt="Vista previa de la demo de consultorio"></div>
-        <div class="pie"><div><h3>Consultorio</h3><p>Servicios, horario y citas por WhatsApp.</p></div><a class="btn sm" href="consultorio/index.html">Ver demo</a></div>
+        <div class="vista"><img src="img/trabajos/consultorio.webp" width="1280" height="2400" loading="lazy" alt="Vista previa de la demo de Clínica Dental Sonrisa Clara"></div>
+        <div class="pie"><div><h3>Clínica Dental Sonrisa Clara</h3><p>Servicios y citas por WhatsApp.</p></div><a class="btn sm" href="consultorio/index.html">Ver demo</a></div>
       </article>
       <article class="trabajo" data-cat="salud">
         <div class="barra"><i></i><i></i><i></i><span>spa</span></div>
-        <div class="vista"><img src="img/trabajos/spa.webp" width="1280" height="880" loading="lazy" alt="Vista previa de la demo de Bella Esencia"></div>
+        <div class="vista"><img src="img/trabajos/spa.webp" width="1280" height="2400" loading="lazy" alt="Vista previa de la demo de Bella Esencia"></div>
         <div class="pie"><div><h3>Bella Esencia</h3><p>Reservas con total.</p></div><a class="btn sm" href="spa/index.html">Ver demo</a></div>
       </article>
       <article class="trabajo" data-cat="servicios">
         <div class="barra"><i></i><i></i><i></i><span>taller</span></div>
-        <div class="vista"><img src="img/trabajos/taller.webp" width="1280" height="880" loading="lazy" alt="Vista previa de la demo de Rueda Firme"></div>
+        <div class="vista"><img src="img/trabajos/taller.webp" width="1280" height="2400" loading="lazy" alt="Vista previa de la demo de Rueda Firme"></div>
         <div class="pie"><div><h3>Rueda Firme</h3><p>Cotizador de servicios.</p></div><a class="btn sm" href="taller/index.html">Ver demo</a></div>
       </article>
       <article class="trabajo" data-cat="comercio">
         <div class="barra"><i></i><i></i><i></i><span>tienda</span></div>
-        <div class="vista"><img src="img/trabajos/tienda.webp" width="1280" height="880" loading="lazy" alt="Vista previa de la demo de Nativa Studio"></div>
+        <div class="vista"><img src="img/trabajos/tienda.webp" width="1280" height="2400" loading="lazy" alt="Vista previa de la demo de Nativa Studio"></div>
         <div class="pie"><div><h3>Nativa Studio</h3><p>Catálogo con carrito.</p></div><a class="btn sm" href="tienda/index.html">Ver demo</a></div>
       </article>
       <article class="trabajo" data-cat="salud">
         <div class="barra"><i></i><i></i><i></i><span>gimnasio</span></div>
-        <div class="vista"><img src="img/trabajos/gimnasio.webp" width="1280" height="880" loading="lazy" alt="Vista previa de la demo de Forja Fitness"></div>
+        <div class="vista"><img src="img/trabajos/gimnasio.webp" width="1280" height="2400" loading="lazy" alt="Vista previa de la demo de Forja Fitness"></div>
         <div class="pie"><div><h3>Forja Fitness</h3><p>Horario de clases y planes.</p></div><a class="btn sm" href="gimnasio/index.html">Ver demo</a></div>
       </article>
       <article class="trabajo" data-cat="servicios">
         <div class="barra"><i></i><i></i><i></i><span>inmobiliaria</span></div>
-        <div class="vista"><img src="img/trabajos/inmobiliaria.webp" width="1280" height="880" loading="lazy" alt="Vista previa de la demo de Valle Alto"></div>
+        <div class="vista"><img src="img/trabajos/inmobiliaria.webp" width="1280" height="2400" loading="lazy" alt="Vista previa de la demo de Valle Alto"></div>
         <div class="pie"><div><h3>Valle Alto</h3><p>Buscador de propiedades.</p></div><a class="btn sm" href="inmobiliaria/index.html">Ver demo</a></div>
       </article>
       <article class="trabajo" data-cat="comercio">
         <div class="barra"><i></i><i></i><i></i><span>colmado</span></div>
-        <div class="vista"><img src="img/trabajos/colmado.webp" width="1280" height="880" loading="lazy" alt="Vista previa de la demo de El Surtido"></div>
+        <div class="vista"><img src="img/trabajos/colmado.webp" width="1280" height="2400" loading="lazy" alt="Vista previa de la demo de El Surtido"></div>
         <div class="pie"><div><h3>El Surtido</h3><p>Pedidos con delivery.</p></div><a class="btn sm" href="colmado/index.html">Ver demo</a></div>
       </article>
     </div>
