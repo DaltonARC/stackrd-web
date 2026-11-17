@@ -46,8 +46,11 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<script>
+if(!matchMedia('(prefers-reduced-motion: reduce)').matches)document.documentElement.classList.add('js');
+</script>
 <style>
-:root{--tinta:#141414;--papel:#f5f5f3;--linea:#e3e3df;--wa:#25d366;--gris:#555}
+:root{--tinta:#141414;--papel:#f5f5f3;--linea:#e3e3df;--wa:#25d366;--gris:#555;--amarillo:#ffd43b}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;scroll-padding-top:84px}
 body{font-family:Inter,system-ui,sans-serif;color:var(--tinta);background:var(--papel);
@@ -65,8 +68,14 @@ section{padding:72px 0}
 .btn.wa{background:var(--wa)}
 .btn.sm{padding:8px 16px;font-size:14px;border-radius:10px;white-space:nowrap}
 
-nav{position:fixed;top:0;left:0;right:0;z-index:50;background:rgba(245,245,243,.94);backdrop-filter:blur(6px);border-bottom:2px solid var(--tinta)}
-nav .wrap{display:flex;align-items:center;gap:22px;height:64px}
+nav{position:fixed;top:0;left:0;right:0;z-index:50;height:66px}
+nav::before,nav::after{content:"";position:absolute;inset:0;z-index:-1;transform-origin:top;transition:transform .3s ease,opacity .3s ease;pointer-events:none}
+nav::before{background:rgba(245,245,243,.94);backdrop-filter:blur(6px);border-bottom:2px solid var(--tinta)}
+nav::after{box-shadow:0 8px 18px rgba(0,0,0,.14);opacity:0}
+nav.scrolled::before,nav.scrolled::after{transform:scaleY(.82)}
+nav.scrolled::after{opacity:1}
+nav .wrap{display:flex;align-items:center;gap:22px;height:64px;transition:transform .3s ease}
+nav.scrolled .wrap{transform:translateY(-5px)}
 .marca{display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:800;font-size:20px;margin-right:auto}
 .marca img{width:34px;height:34px;border-radius:8px;border:2px solid var(--tinta)}
 nav ul{display:flex;gap:22px;list-style:none}
@@ -79,6 +88,18 @@ nav ul a:hover{text-decoration:underline;text-underline-offset:4px}
 .hero p{font-size:18px;color:var(--gris);max-width:540px;margin-bottom:28px}
 .acciones{display:flex;gap:14px;flex-wrap:wrap}
 .hero figure img{width:100%;max-width:380px;display:block;margin:0 auto;mix-blend-mode:multiply}
+.sub{position:relative;isolation:isolate;display:inline-block}
+.sub::after{content:"";position:absolute;left:0;right:0;bottom:.04em;height:.28em;background:var(--amarillo);z-index:-1;transform-origin:left center}
+
+@keyframes entra{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+@keyframes subraya{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@keyframes flota{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+@keyframes pulso{0%{transform:scale(1);opacity:.5}30%{transform:scale(1.75);opacity:0}100%{transform:scale(1.75);opacity:0}}
+.js .e{animation:entra .5s cubic-bezier(.2,.7,.2,1) calc(var(--i) * 100ms) both}
+.js .sub::after{animation:subraya .5s ease-out .65s both}
+.js .hero figure img{animation:entra .5s cubic-bezier(.2,.7,.2,1) .4s both,flota 4s ease-in-out .9s infinite}
+.js .rv{opacity:0;transform:translateY(16px);transition:opacity .5s ease,transform .5s ease}
+.js .rv.vis{opacity:1;transform:none}
 
 .trabajos{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-top:34px}
 .trabajo{background:#fff;border:2px solid var(--tinta);border-radius:14px;overflow:hidden;box-shadow:0 0 0 var(--tinta);transition:transform .15s,box-shadow .15s}
@@ -87,7 +108,11 @@ nav ul a:hover{text-decoration:underline;text-underline-offset:4px}
 .barra i{width:10px;height:10px;border-radius:50%;border:2px solid var(--tinta);background:#fff;display:block}
 .barra span{margin-left:8px;flex:1;font-family:"JetBrains Mono",ui-monospace,monospace;font-size:11px;background:#fff;border:2px solid var(--tinta);border-radius:6px;padding:1px 8px;white-space:nowrap;overflow:hidden}
 .vista{position:relative;aspect-ratio:16/10;overflow:hidden;background:#fff}
-.vista iframe{position:absolute;top:0;left:0;width:1280px;height:800px;border:0;transform-origin:0 0;transform:scale(.25);pointer-events:none}
+.vista iframe{position:absolute;top:0;left:0;width:1280px;height:800px;border:0;transform-origin:0 0;transform:translateY(0) scale(var(--s,.25));pointer-events:none;transition:transform .5s ease}
+@media (hover:hover) and (pointer:fine){
+  .js .vista iframe{height:1600px}
+  .js .trabajo:hover .vista iframe,.js .trabajo:focus-within .vista iframe{transform:translateY(calc(var(--s,.25) * -800px)) scale(var(--s,.25));transition-duration:.7s}
+}
 .trabajo .pie{padding:16px 18px;display:flex;align-items:center;justify-content:space-between;gap:12px;border-top:2px solid var(--tinta)}
 .trabajo h3{font-size:19px}
 .trabajo .pie p{font-size:13.5px;color:var(--gris)}
@@ -109,7 +134,13 @@ nav ul a:hover{text-decoration:underline;text-underline-offset:4px}
 
 .pasos{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;margin-top:34px;counter-reset:p}
 .paso{background:#fff;border:2px solid var(--tinta);border-radius:14px;padding:22px;position:relative}
-.paso::before{counter-increment:p;content:"0" counter(p);font-family:"JetBrains Mono",ui-monospace,monospace;font-weight:700;font-size:13px;background:var(--tinta);color:#fff;border-radius:6px;padding:3px 8px}
+.paso::before{counter-increment:p;content:"0" counter(p);display:inline-block;font-family:"JetBrains Mono",ui-monospace,monospace;font-weight:700;font-size:13px;line-height:1.55;background:var(--tinta);color:#fff;border-radius:6px;padding:3px 8px}
+.js .pasos .paso::before{opacity:.22;transform:scale(.85);transform-origin:left center;transition:opacity .4s ease,transform .4s ease}
+.js .pasos.on .paso::before{opacity:1;transform:none}
+.js .pasos.on .paso:nth-child(1)::before{transition-delay:.3s}
+.js .pasos.on .paso:nth-child(2)::before{transition-delay:.55s}
+.js .pasos.on .paso:nth-child(3)::before{transition-delay:.8s}
+.js .pasos.on .paso:nth-child(4)::before{transition-delay:1.05s}
 .paso h3{font-size:19px;margin:14px 0 6px}
 .paso p{font-size:14.5px;color:var(--gris)}
 
@@ -118,9 +149,12 @@ details{background:#fff;border:2px solid var(--tinta);border-radius:12px;margin-
 details:hover{transform:translate(-3px,-3px);box-shadow:5px 5px 0 var(--tinta)}
 summary{cursor:pointer;font-weight:600;padding:16px 50px 16px 20px;list-style:none;position:relative}
 summary::-webkit-details-marker{display:none}
-summary::after{content:"+";position:absolute;right:20px;top:50%;transform:translateY(-50%);font-family:"JetBrains Mono",ui-monospace,monospace;font-size:22px}
-details[open] summary::after{content:"\2212"}
+summary::before,summary::after{content:"";position:absolute;right:20px;top:50%;width:14px;height:2px;margin-top:-1px;background:var(--tinta);border-radius:1px}
+summary::after{transform:rotate(90deg);transition:transform .3s ease}
+details[open] summary::after{transform:rotate(180deg)}
+details.cerrando summary::after{transform:rotate(90deg)}
 details p{padding:0 20px 18px;color:var(--gris);font-size:15.5px}
+.js details p{overflow:hidden}
 
 .cierre{background:var(--tinta);color:#fff;padding:76px 0;text-align:center;border-top:2px solid var(--tinta)}
 .cierre h2{color:#fff;margin:0 auto 14px;max-width:700px}
@@ -135,6 +169,7 @@ footer a:first-child{margin-left:0}
 
 .flotante{position:fixed;right:16px;bottom:16px;width:44px;height:44px;border-radius:50%;background:var(--wa);border:2px solid var(--tinta);display:grid;place-items:center;box-shadow:0 6px 18px rgba(0,0,0,.25);z-index:60}
 .flotante svg{width:24px;height:24px;fill:#fff}
+.flotante::after{content:"";position:absolute;inset:-2px;border-radius:50%;border:2px solid var(--wa);opacity:0;pointer-events:none;animation:pulso 4s ease-out 2s infinite}
 
 @media (max-width:900px){
   .trabajos{grid-template-columns:1fr}
@@ -154,7 +189,7 @@ footer a:first-child{margin-left:0}
   .acciones .btn{width:100%}
   footer .wrap{flex-direction:column;align-items:flex-start}
 }
-@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
 </style>
 </head>
 <body>
@@ -176,10 +211,10 @@ footer a:first-child{margin-left:0}
 <section class="hero" id="inicio">
   <div class="wrap">
     <div>
-      <span class="tag">Santiago de los Caballeros</span>
-      <h1>Páginas web que convierten visitas en clientes</h1>
-      <p>Diseño y desarrollo de páginas web y sistemas a la medida para negocios, para que tus clientes te encuentren en Google y te escriban directo a WhatsApp.</p>
-      <div class="acciones">
+      <span class="tag e" style="--i:0">Santiago de los Caballeros</span>
+      <h1 class="e" style="--i:1">Páginas web que convierten visitas en <span class="sub">clientes</span></h1>
+      <p class="e" style="--i:2">Diseño y desarrollo de páginas web y sistemas a la medida para negocios, para que tus clientes te encuentren en Google y te escriban directo a WhatsApp.</p>
+      <div class="acciones e" style="--i:3">
         <a class="btn wa" href="https://wa.me/18293390257?text=Hola%2C%20quiero%20cotizar%20una%20p%C3%A1gina%20web%20para%20mi%20negocio." target="_blank" rel="noopener">Cotizar por WhatsApp</a>
         <a class="btn" href="#trabajos">Ver trabajos</a>
       </div>
@@ -314,13 +349,86 @@ footer a:first-child{margin-left:0}
   var vistas = document.querySelectorAll('.vista');
   function ajustar(){
     vistas.forEach(function(v){
-      var f = v.querySelector('iframe');
-      f.style.transform = 'scale(' + (v.clientWidth / 1280) + ')';
+      v.querySelector('iframe').style.setProperty('--s', v.clientWidth / 1280);
     });
   }
   ajustar();
   window.addEventListener('resize', ajustar);
   if (window.ResizeObserver) vistas.forEach(function(v){ new ResizeObserver(ajustar).observe(v); });
+
+  var nav = document.querySelector('nav');
+  var pend = false;
+  function revisar(){
+    pend = false;
+    nav.classList.toggle('scrolled', window.scrollY > 10);
+  }
+  window.addEventListener('scroll', function(){
+    if (!pend){ pend = true; requestAnimationFrame(revisar); }
+  }, {passive:true});
+  revisar();
+
+  if (!document.documentElement.classList.contains('js')) return;
+
+  if ('IntersectionObserver' in window){
+    var items = document.querySelectorAll('section:not(.hero) h2,.trabajo,.caja,.incluye > div,.paso,.faq details');
+    var io = new IntersectionObserver(function(es){
+      var filas = {};
+      es.filter(function(e){ return e.isIntersecting; })
+        .sort(function(a,b){
+          var ra = a.boundingClientRect, rb = b.boundingClientRect;
+          return ra.top - rb.top || ra.left - rb.left;
+        })
+        .forEach(function(e){
+          var t = e.target;
+          var fila = Math.round(e.boundingClientRect.top / 10);
+          var k = filas[fila] = (filas[fila] === undefined ? 0 : filas[fila] + 1);
+          var d = k * 80;
+          t.style.transitionDelay = d + 'ms';
+          t.classList.add('vis');
+          io.unobserve(t);
+          setTimeout(function(){
+            t.classList.remove('rv', 'vis');
+            t.style.transitionDelay = '';
+          }, d + 600);
+        });
+    }, {threshold:0.12, rootMargin:'0px 0px -6% 0px'});
+    items.forEach(function(el){ el.classList.add('rv'); io.observe(el); });
+
+    var pasos = document.querySelector('.pasos');
+    var ip = new IntersectionObserver(function(es){
+      if (es[0].isIntersecting){ pasos.classList.add('on'); ip.disconnect(); }
+    }, {threshold:0.3});
+    ip.observe(pasos);
+  }
+
+  document.querySelectorAll('.faq details').forEach(function(d){
+    var p = d.querySelector('p'), a = null;
+    function kf(h, abierto){
+      var cerrado = {height:'0px', paddingBottom:'0px', opacity:0};
+      var lleno = {height:h + 'px', paddingBottom:'18px', opacity:1};
+      return abierto ? [cerrado, lleno] : [lleno, cerrado];
+    }
+    d.querySelector('summary').addEventListener('click', function(e){
+      e.preventDefault();
+      if (a){ a.onfinish = null; a.cancel(); a = null; }
+      var cerrar = d.open && !d.classList.contains('cerrando');
+      if (cerrar){
+        d.classList.add('cerrando');
+        a = p.animate(kf(p.offsetHeight, false), {duration:300, easing:'ease', fill:'both'});
+        a.onfinish = function(){
+          d.open = false;
+          d.classList.remove('cerrando');
+          a.cancel();
+          a = null;
+        };
+      } else {
+        d.classList.remove('cerrando');
+        d.open = true;
+        a = p.animate(kf(p.offsetHeight, true), {duration:300, easing:'ease'});
+        a.onfinish = function(){ a = null; };
+      }
+    });
+  });
 })();
 </script>
 </body>
