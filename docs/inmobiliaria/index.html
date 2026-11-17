@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Valle Alto Bienes Raíces | Propiedades en Santiago</title>
+<meta name="description" content="Casas, apartamentos, locales y solares en venta y alquiler en Santiago de los Caballeros. Consulta por WhatsApp.">
+<meta property="og:title" content="Valle Alto Bienes Raíces">
+<meta property="og:description" content="Encuentra tu próxima propiedad en Santiago.">
+<meta property="og:image" content="https://daltonarc.github.io/stackrd-web/inmobiliaria/og.png">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--azul:#0f1f3a;--azul2:#18294a;--oro:#c9a55c;--oro2:#e3c88f;--marfil:#f8f6f1;--linea:#e6e1d6;--gris:#6b7280;--serif:'DM Serif Display',Georgia,serif}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Manrope,system-ui,sans-serif;background:var(--marfil);color:var(--azul);line-height:1.6}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+.demo{background:var(--azul);color:#cfd6e4;font-size:12.5px;text-align:center;padding:7px 12px;border-bottom:1px solid rgba(255,255,255,.08)}
+.demo a{color:var(--oro2);font-weight:600}
+.wrap{max-width:1240px;margin:0 auto;padding:0 26px}
+/* hero */
+.hero{background:var(--azul);color:#fff;position:relative;overflow:hidden;padding-bottom:120px}
+.hero::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 85% 20%,rgba(201,165,92,.22),transparent 45%),linear-gradient(180deg,transparent 60%,rgba(0,0,0,.25))}
+.hero svg.sky{position:absolute;right:0;bottom:0;width:62%;max-width:800px;opacity:.9}
+nav.top{position:relative;display:flex;justify-content:space-between;align-items:center;padding:24px 0}
+.logo{display:flex;align-items:center;gap:12px;font-family:var(--serif);font-size:24px}
+.logo i{width:38px;height:38px;border:1.5px solid var(--oro);display:grid;place-items:center;font-style:normal;color:var(--oro);font-size:18px;transform:rotate(45deg)}
+.logo i b{transform:rotate(-45deg);font-weight:400}
+.logo small{display:block;font-family:Manrope;font-size:10.5px;letter-spacing:3.5px;color:var(--oro2);text-transform:uppercase;margin-top:-2px}
+nav.top ul{display:flex;gap:30px;list-style:none;font-size:14.5px;color:#cfd6e4}
+nav.top ul a:hover{color:var(--oro2)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--oro);color:var(--azul);font-weight:700;font-size:14.5px;padding:14px 24px;border-radius:6px;transition:background .2s,transform .2s}
+.btn:hover{background:var(--oro2);transform:translateY(-2px)}
+.btn.lin{background:transparent;border:1.5px solid var(--oro);color:var(--oro2)}
+.hero .cont{position:relative;padding-top:70px;max-width:640px}
+.hero .kick{color:var(--oro2);font-size:13px;letter-spacing:3px;text-transform:uppercase}
+.hero h1{font-family:var(--serif);font-weight:400;font-size:clamp(42px,6vw,78px);line-height:1.04;margin:16px 0 20px}
+.hero h1 em{color:var(--oro2)}
+.hero p{color:#cfd6e4;font-size:18px;max-width:520px}
+/* buscador */
+.buscador{position:relative;z-index:5;margin-top:-62px}
+.caja{background:#fff;border-radius:14px;box-shadow:0 24px 60px rgba(15,31,58,.18);padding:22px}
+.ops{display:inline-flex;background:var(--marfil);border-radius:8px;padding:4px;margin-bottom:16px}
+.ops button{padding:9px 20px;border-radius:6px;font-weight:600;font-size:14px;color:var(--gris)}
+.ops button.on{background:var(--azul);color:#fff}
+.campos{display:grid;grid-template-columns:repeat(3,1fr) auto;gap:12px;align-items:end}
+.campos label{font-size:12px;letter-spacing:1px;text-transform:uppercase;color:var(--gris);font-weight:600;display:block;margin-bottom:6px}
+select{width:100%;font:inherit;font-size:15px;border:1.5px solid var(--linea);border-radius:8px;padding:13px 12px;background:#fff;color:var(--azul)}
+select:focus{outline:none;border-color:var(--oro)}
+.campos .btn{height:50px;padding:0 28px;background:var(--azul);color:#fff}
+.campos .btn:hover{background:var(--azul2)}
+/* listado */
+section{padding:90px 0}
+.cab{display:flex;justify-content:space-between;align-items:end;gap:20px;flex-wrap:wrap;margin-bottom:34px}
+.cab small{color:var(--oro);font-weight:700;letter-spacing:3px;text-transform:uppercase;font-size:12.5px}
+.cab h2{font-family:var(--serif);font-weight:400;font-size:clamp(34px,4.5vw,52px);line-height:1.1;margin-top:6px}
+.res{font-size:15px;color:var(--gris)}
+.res b{color:var(--azul)}
+.lista{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+.prop{background:#fff;border-radius:14px;overflow:hidden;border:1px solid var(--linea);cursor:pointer;text-align:left;transition:transform .3s,box-shadow .3s;display:flex;flex-direction:column}
+.prop:hover{transform:translateY(-6px);box-shadow:0 20px 44px rgba(15,31,58,.12)}
+.prop .im{position:relative;aspect-ratio:16/11;overflow:hidden}
+.prop .im svg{width:100%;height:100%;display:block;transition:transform .6s}
+.prop:hover .im svg{transform:scale(1.05)}
+.badge{position:absolute;top:14px;left:14px;background:var(--azul);color:#fff;font-size:12px;font-weight:700;padding:5px 11px;border-radius:4px;letter-spacing:.5px}
+.badge.alq{background:var(--oro);color:var(--azul)}
+.cod{position:absolute;top:14px;right:14px;background:rgba(255,255,255,.9);font-size:12px;font-weight:700;padding:5px 9px;border-radius:4px}
+.prop .tx{padding:20px 22px 22px;display:flex;flex-direction:column;flex:1}
+.prop .pr{font-family:var(--serif);font-size:28px;line-height:1}
+.prop .pr small{font-family:Manrope;font-size:13px;color:var(--gris)}
+.prop h3{font-size:16.5px;font-weight:600;margin:8px 0 2px}
+.prop .sec{color:var(--gris);font-size:14px;display:flex;gap:6px;align-items:center}
+.feats{display:flex;gap:16px;border-top:1px solid var(--linea);margin-top:auto;padding-top:14px;font-size:13.5px;color:var(--gris);flex-wrap:wrap}
+.feats span{display:flex;gap:6px;align-items:center}
+.feats svg{width:17px;height:17px;stroke:var(--oro)}
+.prop .tx .sp{height:14px}
+.vacio{grid-column:1/-1;text-align:center;padding:60px 20px;border:1.5px dashed var(--linea);border-radius:14px;color:var(--gris)}
+/* sectores */
+.sectores{background:#fff;border-top:1px solid var(--linea);border-bottom:1px solid var(--linea)}
+.secs{display:grid;grid-template-columns:repeat(6,1fr);gap:14px}
+.sc{border:1px solid var(--linea);border-radius:12px;padding:20px 16px;text-align:left;transition:border-color .2s,background .2s}
+.sc:hover{border-color:var(--oro);background:var(--marfil)}
+.sc b{display:block;font-family:var(--serif);font-weight:400;font-size:20px;line-height:1.15}
+.sc span{font-size:13px;color:var(--gris)}
+/* como */
+.como{display:grid;grid-template-columns:.9fr 1.1fr;gap:60px;align-items:center}
+.como h2{font-family:var(--serif);font-weight:400;font-size:clamp(34px,4.5vw,52px);line-height:1.1;margin:8px 0 16px}
+.como p{color:var(--gris)}
+.pasos{display:grid;gap:14px}
+.paso{display:grid;grid-template-columns:56px 1fr;gap:18px;background:#fff;border:1px solid var(--linea);border-radius:12px;padding:20px}
+.paso b{font-family:var(--serif);font-weight:400;font-size:34px;color:var(--oro);line-height:1}
+.paso h3{font-size:17px}
+.paso p{font-size:14.5px}
+/* contacto */
+.contacto{background:var(--azul);color:#fff;border-radius:18px;padding:56px;display:grid;grid-template-columns:1.2fr .8fr;gap:30px;align-items:center;position:relative;overflow:hidden}
+.contacto::after{content:"";position:absolute;right:-80px;top:-80px;width:260px;height:260px;border:1.5px solid rgba(201,165,92,.35);transform:rotate(45deg)}
+.contacto h2{font-family:var(--serif);font-weight:400;font-size:clamp(30px,4vw,46px);line-height:1.1}
+.contacto p{color:#cfd6e4;margin-top:10px}
+.contacto .acc{display:flex;flex-direction:column;gap:12px;position:relative;z-index:1}
+footer{padding:34px 0;color:var(--gris);font-size:14px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+footer a{color:var(--azul);font-weight:700}
+/* modal */
+.modal{position:fixed;inset:0;z-index:50;display:grid;place-items:center;padding:20px;background:rgba(10,20,40,.6);opacity:0;pointer-events:none;transition:opacity .3s}
+.modal.on{opacity:1;pointer-events:auto}
+.ficha{background:#fff;border-radius:16px;max-width:920px;width:100%;max-height:92vh;overflow:auto;display:grid;grid-template-columns:1.15fr .85fr;transform:translateY(20px);transition:transform .35s}
+.modal.on .ficha{transform:none}
+.gal .main{aspect-ratio:4/3;overflow:hidden}
+.gal .main svg{width:100%;height:100%;display:block}
+.thumbs{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;padding:8px}
+.thumbs button{aspect-ratio:4/3;overflow:hidden;border-radius:8px;outline:2px solid transparent;outline-offset:-2px}
+.thumbs button.on{outline-color:var(--oro)}
+.thumbs svg{width:100%;height:100%;display:block}
+.det{padding:30px;position:relative}
+.det .x{position:absolute;top:14px;right:16px;font-size:28px;line-height:1;color:var(--gris)}
+.det .pr{font-family:var(--serif);font-size:36px;line-height:1;margin:8px 0}
+.det h3{font-size:20px}
+.det .sec{color:var(--gris);font-size:14.5px;margin-bottom:16px}
+.det .grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:18px 0}
+.det .grid2 div{background:var(--marfil);border-radius:8px;padding:10px 12px;font-size:13px;color:var(--gris)}
+.det .grid2 b{display:block;color:var(--azul);font-size:17px}
+.det p.desc{font-size:14.5px;color:var(--gris);margin-bottom:20px}
+.det .btn{width:100%}
+.js .rv{opacity:0;transform:translateY(22px);transition:opacity .7s,transform .7s}
+.js .rv.in{opacity:1;transform:none}
+@media(max-width:1000px){.lista{grid-template-columns:1fr 1fr}.secs{grid-template-columns:repeat(3,1fr)}.como,.contacto{grid-template-columns:1fr}nav.top ul{display:none}}
+@media(max-width:700px){
+  .lista{grid-template-columns:1fr}.secs{grid-template-columns:1fr 1fr}
+  .campos{grid-template-columns:1fr}
+  .ficha{grid-template-columns:1fr}
+  .hero svg.sky{width:120%;opacity:.25}
+  .contacto{padding:34px 24px}
+  section{padding:70px 0}
+  nav.top .btn{display:none}
+}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.js .rv{opacity:1;transform:none}}
+</style>
+<script>document.documentElement.classList.add('js')</script>
+</head>
+<body>
+<div class="demo">Página de demostración hecha por StackRD · <a href="https://wa.me/18293390257?text=Hola%2C%20quiero%20una%20p%C3%A1gina%20web%20para%20mi%20negocio." target="_blank" rel="noopener">¿Quieres una así para tu negocio?</a></div>
+
+<header class="hero">
+  <svg class="sky" viewBox="0 0 800 420" fill="none" aria-hidden="true"><g stroke="#c9a55c" stroke-width="1.4" opacity=".75"><path d="M40 420V250h90v170M130 420V180h70v240M200 420V290h60v130M260 420V140h110v280M370 420V220h80v200M450 420V100h100v320M550 420V260h70v160M620 420V170h90v250M710 420V230h70v190"/><path d="M280 170h70M280 200h70M280 230h70M280 260h70M280 290h70M470 130h60M470 160h60M470 190h60M470 220h60M470 250h60M640 200h50M640 230h50M640 260h50"/></g><circle cx="680" cy="90" r="34" fill="#c9a55c" opacity=".35"/></svg>
+  <div class="wrap">
+    <nav class="top">
+      <a class="logo" href="#"><i><b>V</b></i><span>Valle Alto<small>Bienes raíces</small></span></a>
+      <ul><li><a href="#propiedades">Propiedades</a></li><li><a href="#sectores">Sectores</a></li><li><a href="#como">Cómo trabajamos</a></li></ul>
+      <a class="btn lin" href="#contacto">Contactar</a>
+    </nav>
+    <div class="cont rv">
+      <span class="kick">Santiago de los Caballeros</span>
+      <h1>El lugar donde<br>quieres <em>vivir</em><br>ya tiene dirección</h1>
+      <p>Casas, apartamentos, locales y solares en venta y alquiler en los mejores sectores de Santiago. Te acompañamos desde la primera visita hasta la firma.</p>
+    </div>
+  </div>
+</header>
+
+<div class="wrap buscador">
+  <div class="caja rv">
+    <div class="ops" id="ops"><button class="on" data-v="todas">Todas</button><button data-v="Venta">Comprar</button><button data-v="Alquiler">Alquilar</button></div>
+    <div class="campos">
+      <div><label for="ftipo">Tipo</label><select id="ftipo"><option value="todos">Todos los tipos</option><option>Casa</option><option>Apartamento</option><option>Local</option><option>Solar</option></select></div>
+      <div><label for="fsec">Sector</label><select id="fsec"><option value="todos">Todos los sectores</option><option>Los Jardines</option><option>Cerros de Gurabo</option><option>Villa Olga</option><option>Gurabo</option><option>Bella Vista</option><option>Reparto del Este</option></select></div>
+      <div><label for="fpre">Precio</label><select id="fpre"><option value="todos">Cualquier precio</option><option value="0-100000">Hasta US$100,000</option><option value="100000-250000">US$100,000 – 250,000</option><option value="250000-99999999">Más de US$250,000</option><option value="alq">Alquiler mensual</option></select></div>
+      <a class="btn" href="#propiedades" id="buscar">Buscar</a>
+    </div>
+  </div>
+</div>
+
+<section id="propiedades"><div class="wrap">
+  <div class="cab rv"><div><small>Propiedades</small><h2>Disponibles ahora</h2></div><p class="res" id="res"></p></div>
+  <div class="lista" id="lista"></div>
+</div></section>
+
+<section id="sectores" class="sectores"><div class="wrap">
+  <div class="cab rv"><div><small>Sectores</small><h2>Explora por zona</h2></div></div>
+  <div class="secs" id="secs"></div>
+</div></section>
+
+<section id="como"><div class="wrap como">
+  <div class="rv"><small style="color:var(--oro);font-weight:700;letter-spacing:3px;text-transform:uppercase;font-size:12.5px">Cómo trabajamos</small><h2>Un proceso claro, sin sorpresas</h2><p>Te explicamos cada paso y revisamos la documentación de cada propiedad antes de que tomes una decisión.</p></div>
+  <div class="pasos">
+    <div class="paso rv"><b>1</b><div><h3>Nos cuentas qué buscas</h3><p>Presupuesto, sector y tipo de propiedad.</p></div></div>
+    <div class="paso rv"><b>2</b><div><h3>Visitas acompañado</h3><p>Coordinamos las visitas en el horario que te funcione.</p></div></div>
+    <div class="paso rv"><b>3</b><div><h3>Revisamos documentos</h3><p>Título, deslinde y estado legal antes de avanzar.</p></div></div>
+    <div class="paso rv"><b>4</b><div><h3>Firmamos</h3><p>Te acompañamos en el cierre y la entrega.</p></div></div>
+  </div>
+</div></section>
+
+<div class="wrap" id="contacto">
+  <div class="contacto rv">
+    <div><h2>¿Quieres vender o alquilar tu propiedad?</h2><p>La publicamos, la mostramos y te mantenemos al tanto de cada interesado.</p></div>
+    <div class="acc"><a class="btn" data-wa="Hola, vi la demo de Valle Alto y quiero vender o alquilar mi propiedad.">Publicar mi propiedad</a><a class="btn lin" data-wa="Hola, vi la demo de Valle Alto y quiero ayuda para encontrar una propiedad.">Busco una propiedad</a></div>
+  </div>
+  <footer><span>© Valle Alto Bienes Raíces · Santiago de los Caballeros</span><span>Página hecha por <a href="https://wa.me/18293390257?text=Hola%2C%20vi%20una%20p%C3%A1gina%20hecha%20por%20StackRD%20y%20quiero%20una." target="_blank" rel="noopener">StackRD</a></span></footer>
+</div>
+
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-label="Detalle de propiedad"><div class="ficha" id="ficha"></div></div>
+
+<script>
+const WA='18293390257',wa=m=>'https://wa.me/'+WA+'?text='+encodeURIComponent(m);
+document.querySelectorAll('[data-wa]').forEach(a=>{a.href=wa(a.dataset.wa);a.target='_blank';a.rel='noopener'});
+const fU=n=>'US$'+n.toLocaleString('en-US'),fR=n=>'RD$'+n.toLocaleString('en-US');
+const PAL=[['#cfd9e6','#9fb3cc','#e8dcc2'],['#e9dfcf','#c9b08a','#b9c9d6'],['#d7e3d9','#9cb7a2','#efe6d3'],['#e5dbe6','#b7a2bd','#f1e9d8']];
+function img(t,v,k){const [a,b,c]=PAL[v%4],g='g'+t+v+k,sky=k===1?'#f2c58f':k===2?'#b9cbe0':a;
+ let body='';
+ if(t==='Casa')body=`<path d="M70 150l90-62 90 62v90H70z" fill="#fff"/><path d="M58 156l102-72 102 72" stroke="#0f1f3a" stroke-width="5" fill="none"/><rect x="140" y="180" width="40" height="60" fill="${b}"/><rect x="92" y="168" width="34" height="30" fill="${c}"/><rect x="194" y="168" width="34" height="30" fill="${c}"/><rect x="250" y="190" width="70" height="50" fill="#fff"/><path d="M250 190h70" stroke="#0f1f3a" stroke-width="5"/>`;
+ if(t==='Apartamento')body=`<rect x="110" y="50" width="120" height="190" fill="#fff"/>${[70,105,140,175].map(y=>[128,166,204].map(x=>`<rect x="${x-10}" y="${y}" width="22" height="22" fill="${c}"/>`).join('')).join('')}<rect x="150" y="212" width="40" height="28" fill="${b}"/><rect x="236" y="110" width="70" height="130" fill="#fff" opacity=".85"/>${[125,155,185].map(y=>`<rect x="252" y="${y}" width="38" height="16" fill="${c}"/>`).join('')}`;
+ if(t==='Local')body=`<rect x="70" y="110" width="200" height="130" fill="#fff"/><rect x="70" y="96" width="200" height="22" fill="#0f1f3a"/><path d="M70 118h200l-12 22H82z" fill="${b}"/><rect x="88" y="152" width="96" height="88" fill="${c}"/><rect x="200" y="160" width="50" height="80" fill="${b}"/>`;
+ if(t==='Solar')body=`<path d="M30 240l60-70 70 40 70-60 80 90z" fill="${b}"/><path d="M60 230l60-28 70 18 80-26" stroke="#fff" stroke-width="3" stroke-dasharray="8 8"/><rect x="200" y="150" width="4" height="60" fill="#0f1f3a"/><path d="M204 150h40l-8 12 8 12h-40" fill="#c9a55c"/>`;
+ return `<svg viewBox="0 0 340 240" preserveAspectRatio="xMidYMid slice"><defs><linearGradient id="${g}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${sky}"/><stop offset="1" stop-color="${a}"/></linearGradient></defs><rect width="340" height="240" fill="url(#${g})"/><circle cx="${k===1?60:280}" cy="${k===1?70:50}" r="22" fill="#fff" opacity=".6"/><rect y="230" width="340" height="10" fill="#8fa98f"/>${body}</svg>`}
+const P=[
+ {c:'VA-101',t:'Casa',o:'Venta',s:'Cerros de Gurabo',n:'Casa familiar con patio',p:285000,h:4,b:3,pk:2,m:320,d:'Casa de dos niveles con terraza techada, patio con área verde, cocina amplia y cuarto de servicio.'},
+ {c:'VA-102',t:'Apartamento',o:'Venta',s:'Los Jardines',n:'Apartamento con balcón',p:138000,h:3,b:2,pk:2,m:145,d:'Tercer piso con ascensor, balcón con vista abierta, área social con piscina y planta full.'},
+ {c:'VA-103',t:'Apartamento',o:'Alquiler',s:'Villa Olga',n:'Apartamento amueblado',p:42000,h:2,b:2,pk:1,m:95,d:'Totalmente amueblado y equipado, ideal para profesionales. Incluye mantenimiento.',rd:1},
+ {c:'VA-104',t:'Local',o:'Alquiler',s:'Bella Vista',n:'Local comercial en avenida',p:65000,h:0,b:1,pk:4,m:120,d:'Local a pie de calle con vitrina, baño y parqueos al frente. Excelente flujo de personas.',rd:1},
+ {c:'VA-105',t:'Solar',o:'Venta',s:'Gurabo',n:'Solar residencial',p:72000,h:0,b:0,pk:0,m:600,d:'Solar en residencial cerrado con calles asfaltadas, agua y energía disponibles. Título al día.'},
+ {c:'VA-106',t:'Casa',o:'Alquiler',s:'Reparto del Este',n:'Casa de un nivel',p:38000,h:3,b:2,pk:2,m:180,d:'Casa de un nivel con marquesina techada, patio trasero y calentador de agua.',rd:1},
+ {c:'VA-107',t:'Apartamento',o:'Venta',s:'Villa Olga',n:'Penthouse con terraza',p:245000,h:3,b:3,pk:2,m:210,d:'Penthouse de dos niveles con terraza privada, jacuzzi y vista a la ciudad.'},
+ {c:'VA-108',t:'Casa',o:'Venta',s:'Los Jardines',n:'Casa remodelada',p:198000,h:3,b:3,pk:2,m:240,d:'Recién remodelada, con cocina abierta, sala de doble altura y patio con pérgola.'},
+ {c:'VA-109',t:'Local',o:'Venta',s:'Reparto del Este',n:'Local en plaza',p:95000,h:0,b:1,pk:2,m:80,d:'Local en plaza comercial con seguridad, parqueos compartidos y alta visibilidad.'},
+ {c:'VA-110',t:'Apartamento',o:'Alquiler',s:'Cerros de Gurabo',n:'Apartamento moderno',p:55000,h:3,b:2,pk:2,m:130,d:'Edificio nuevo con gimnasio y área social. Cocina con tope de cuarzo y línea blanca.',rd:1},
+ {c:'VA-111',t:'Solar',o:'Venta',s:'Cerros de Gurabo',n:'Solar con vista',p:150000,h:0,b:0,pk:0,m:850,d:'Solar en zona alta con vista panorámica, ideal para residencia o proyecto de apartamentos.'}
+];
+P.forEach((x,i)=>x.v=i);
+const ic={h:'<svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M3 18v-6a2 2 0 012-2h14a2 2 0 012 2v6M3 18h18M5 10V6h14v4"/></svg>',b:'<svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M4 12h16v3a4 4 0 01-4 4H8a4 4 0 01-4-4zM6 12V6a2 2 0 014 0"/></svg>',pk:'<svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M5 16l1.5-5h11L19 16M4 16h16v3H4zM7 19v1M17 19v1"/></svg>',m:'<svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M4 4h16v16H4zM4 9h5V4"/></svg>'};
+const precio=x=>x.rd?fR(x.p)+' <small>/mes</small>':fU(x.p);
+const feats=x=>[x.h?`<span>${ic.h}${x.h} hab.</span>`:'',x.b?`<span>${ic.b}${x.b} baños</span>`:'',x.pk?`<span>${ic.pk}${x.pk} parq.</span>`:'',`<span>${ic.m}${x.m} m²</span>`].join('');
+let F={o:'todas',t:'todos',s:'todos',p:'todos'};
+const L=document.getElementById('lista');
+function pinta(){
+ const l=P.filter(x=>(F.o==='todas'||x.o===F.o)&&(F.t==='todos'||x.t===F.t)&&(F.s==='todos'||x.s===F.s)&&(F.p==='todos'||(F.p==='alq'?x.o==='Alquiler':(()=>{const[a,b]=F.p.split('-').map(Number);return x.o==='Venta'&&x.p>=a&&x.p<=b})())));
+ document.getElementById('res').innerHTML=`<b>${l.length}</b> propiedad${l.length===1?'':'es'} encontrada${l.length===1?'':'s'}`;
+ L.innerHTML=l.length?l.map(x=>`<button class="prop" data-v="${x.v}" aria-label="Ver ${x.n}"><div class="im">${img(x.t,x.v,0)}<span class="badge ${x.o==='Alquiler'?'alq':''}">${x.o}</span><span class="cod">${x.c}</span></div><div class="tx"><div class="pr">${precio(x)}</div><h3>${x.n}</h3><div class="sec">${x.t} · ${x.s}</div><div class="sp"></div><div class="feats">${feats(x)}</div></div></button>`).join(''):'<div class="vacio">No hay propiedades con esos filtros. Prueba con otro sector o rango de precio, o escríbenos y te avisamos cuando llegue una.</div>';
+}
+const ops=document.getElementById('ops');
+ops.onclick=e=>{const b=e.target.closest('button');if(!b)return;F.o=b.dataset.v;ops.querySelectorAll('button').forEach(x=>x.classList.toggle('on',x===b));pinta()};
+['ftipo','fsec','fpre'].forEach((id,i)=>document.getElementById(id).onchange=e=>{F[['t','s','p'][i]]=e.target.value;pinta()});
+const S=document.getElementById('secs');
+['Los Jardines','Cerros de Gurabo','Villa Olga','Gurabo','Bella Vista','Reparto del Este'].forEach(s=>{const n=P.filter(x=>x.s===s).length;S.insertAdjacentHTML('beforeend',`<button class="sc rv" data-s="${s}"><b>${s}</b><span>${n} propiedad${n===1?'':'es'}</span></button>`)});
+S.onclick=e=>{const b=e.target.closest('.sc');if(!b)return;F.s=b.dataset.s;document.getElementById('fsec').value=b.dataset.s;pinta();document.getElementById('propiedades').scrollIntoView({behavior:'smooth'})};
+const M=document.getElementById('modal'),FI=document.getElementById('ficha');let ultimo=null;
+L.onclick=e=>{const b=e.target.closest('.prop');if(!b)return;ultimo=b;abrir(P[b.dataset.v])};
+function abrir(x){
+ FI.innerHTML=`<div class="gal"><div class="main" id="gmain">${img(x.t,x.v,0)}</div><div class="thumbs">${[0,1,2].map(k=>`<button data-k="${k}" class="${k?'':'on'}" aria-label="Foto ${k+1}">${img(x.t,x.v,k)}</button>`).join('')}</div></div>
+ <div class="det"><button class="x" aria-label="Cerrar">×</button><span class="badge ${x.o==='Alquiler'?'alq':''}" style="position:static;display:inline-block">${x.o} · ${x.c}</span><div class="pr">${precio(x)}</div><h3>${x.n}</h3><div class="sec">${x.t} · ${x.s}, Santiago</div>
+ <div class="grid2">${x.h?`<div><b>${x.h}</b>Habitaciones</div>`:''}${x.b?`<div><b>${x.b}</b>Baños</div>`:''}${x.pk?`<div><b>${x.pk}</b>Parqueos</div>`:''}<div><b>${x.m} m²</b>${x.t==='Solar'?'Terreno':'Construcción'}</div></div>
+ <p class="desc">${x.d}</p><a class="btn" target="_blank" rel="noopener" href="${wa(`Hola, vi la demo de Valle Alto y me interesa la propiedad ${x.c}: ${x.n} en ${x.s} (${x.rd?fR(x.p)+' al mes':fU(x.p)}). ¿Podemos coordinar una visita?`)}">Me interesa</a></div>`;
+ M.classList.add('on');FI.querySelector('.x').focus();
+ FI.querySelector('.thumbs').onclick=e=>{const b=e.target.closest('button');if(!b)return;FI.querySelectorAll('.thumbs button').forEach(y=>y.classList.toggle('on',y===b));document.getElementById('gmain').innerHTML=img(x.t,x.v,+b.dataset.k)};
+ FI.querySelector('.x').onclick=cerrar;
+}
+function cerrar(){M.classList.remove('on');if(ultimo)ultimo.focus()}
+M.onclick=e=>{if(e.target===M)cerrar()};document.addEventListener('keydown',e=>{if(e.key==='Escape'&&M.classList.contains('on'))cerrar()});
+pinta();
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.1});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>

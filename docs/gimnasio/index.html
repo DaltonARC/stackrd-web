@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Forja Fitness Club | Gimnasio en Santiago</title>
+<meta name="description" content="Gimnasio en Santiago con pesas, funcional, spinning, boxeo y yoga. Reserva tu clase por WhatsApp.">
+<meta property="og:title" content="Forja Fitness Club">
+<meta property="og:description" content="Entrena con propósito. Reserva tu clase por WhatsApp.">
+<meta property="og:image" content="https://daltonarc.github.io/stackrd-web/gimnasio/og.png">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{--n:#0a0a0a;--n2:#141414;--n3:#1f1f1f;--lima:#c6ff00;--b:#f5f5f5;--g:#8a8a8a;--anton:'Anton',Impact,sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Archivo,system-ui,sans-serif;background:var(--n);color:var(--b);line-height:1.5;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+.demo{background:var(--lima);color:#000;font-size:12.5px;text-align:center;padding:7px 12px;font-weight:600}
+.demo a{text-decoration:underline}
+.wrap{max-width:1260px;margin:0 auto;padding:0 26px}
+header{position:absolute;left:0;right:0;z-index:10}
+header .wrap{display:flex;justify-content:space-between;align-items:center;padding-top:22px}
+.logo{font-family:var(--anton);font-size:30px;letter-spacing:1px;text-transform:uppercase}
+.logo b{color:var(--lima);font-weight:400}
+header nav{display:flex;gap:28px;font-weight:800;text-transform:uppercase;font-size:13px;letter-spacing:1.5px}
+header nav a:hover{color:var(--lima)}
+.btn{display:inline-flex;align-items:center;gap:10px;background:var(--lima);color:#000;font-weight:800;text-transform:uppercase;letter-spacing:1px;font-size:14px;padding:16px 26px;border-radius:4px;transition:transform .2s,box-shadow .2s}
+.btn:hover{transform:translateY(-3px);box-shadow:0 10px 30px rgba(198,255,0,.25)}
+.btn.out{background:transparent;color:var(--b);box-shadow:inset 0 0 0 2px var(--b)}
+/* hero */
+.hero{position:relative;min-height:92vh;display:flex;align-items:center;overflow:hidden;padding:120px 0 80px;background:radial-gradient(circle at 75% 40%,#1d2a00 0,transparent 55%)}
+.hero h1{font-family:var(--anton);text-transform:uppercase;font-weight:400;font-size:clamp(48px,13vw,190px);line-height:.86;letter-spacing:-1px}
+.hero h1 .o{color:transparent;-webkit-text-stroke:2px var(--b)}
+.hero h1 .l{color:var(--lima)}
+.hero p{max-width:440px;color:#bdbdbd;font-size:18px;margin:28px 0 34px}
+.acc{display:flex;gap:14px;flex-wrap:wrap}
+.pesa{position:absolute;right:-40px;top:50%;transform:translateY(-50%) rotate(-18deg);width:min(48vw,620px);opacity:.95}
+.datos{display:flex;gap:40px;margin-top:56px;flex-wrap:wrap}
+.datos div{border-left:3px solid var(--lima);padding-left:14px;text-transform:uppercase;font-size:13px;letter-spacing:1px;color:var(--g)}
+.datos b{display:block;font-family:var(--anton);font-weight:400;font-size:30px;color:var(--b);letter-spacing:0}
+/* cinta */
+.cinta{background:var(--lima);color:#000;transform:rotate(-2deg);margin:0 -40px;padding:16px 0;overflow:hidden;white-space:nowrap}
+.cinta div{display:inline-block;font-family:var(--anton);font-size:34px;text-transform:uppercase;animation:mq 22s linear infinite}
+.cinta span{margin:0 26px}
+@keyframes mq{to{transform:translateX(-50%)}}
+section{padding:110px 0}
+h2{font-family:var(--anton);font-weight:400;text-transform:uppercase;font-size:clamp(48px,8vw,104px);line-height:.9;margin-bottom:46px}
+h2 span{color:var(--lima)}
+/* disciplinas */
+.disc{display:grid;grid-template-columns:repeat(5,1fr);gap:2px;background:var(--n3);border:2px solid var(--n3)}
+.d{background:var(--n);padding:30px 22px 26px;min-height:280px;display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden;transition:background .3s}
+.d:hover{background:var(--lima);color:#000}
+.d:hover p{color:#222}
+.d .k{font-family:var(--anton);font-size:64px;line-height:1;color:var(--n3);transition:color .3s}
+.d:hover .k{color:rgba(0,0,0,.15)}
+.d h3{font-family:var(--anton);font-weight:400;text-transform:uppercase;font-size:32px;line-height:1}
+.d p{color:var(--g);font-size:14.5px;margin-top:8px}
+/* horario */
+.horario{background:var(--n2)}
+.tabs{display:flex;gap:6px;overflow-x:auto;padding-bottom:6px;margin-bottom:16px}
+.tabs button{flex:0 0 auto;border:2px solid var(--n3);padding:12px 18px;font-weight:800;text-transform:uppercase;font-size:13px;letter-spacing:1px;border-radius:4px;transition:all .2s}
+.tabs button.on{background:var(--lima);border-color:var(--lima);color:#000}
+.fil{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:28px}
+.fil button{font-size:13px;color:var(--g);border-bottom:2px solid transparent;padding:4px 2px;margin-right:12px;font-weight:600}
+.fil button.on{color:var(--b);border-color:var(--lima)}
+.clases{display:grid;gap:8px}
+.clase{display:grid;grid-template-columns:110px 1fr auto auto;gap:20px;align-items:center;background:var(--n);border:2px solid var(--n3);padding:18px 22px;border-radius:4px;text-align:left;width:100%;transition:border-color .2s,transform .2s}
+.clase:hover{border-color:var(--lima);transform:translateX(6px)}
+.clase .h{font-family:var(--anton);font-size:30px}
+.clase b{font-size:18px;text-transform:uppercase;letter-spacing:.5px}
+.clase small{display:block;color:var(--g);font-weight:400;text-transform:none;letter-spacing:0;font-size:14px}
+.clase .cupo{font-size:12px;text-transform:uppercase;letter-spacing:1px;color:var(--g)}
+.clase .r{background:var(--lima);color:#000;font-weight:800;font-size:12px;text-transform:uppercase;letter-spacing:1px;padding:9px 14px;border-radius:4px}
+.nada{color:var(--g);padding:30px;text-align:center;border:2px dashed var(--n3)}
+/* planes */
+.toggle{display:inline-flex;background:var(--n3);border-radius:999px;padding:5px;margin-bottom:40px}
+.toggle button{padding:10px 22px;border-radius:999px;font-weight:800;font-size:13px;text-transform:uppercase;letter-spacing:1px}
+.toggle button.on{background:var(--lima);color:#000}
+.toggle small{color:var(--lima);margin-left:6px}
+.toggle button.on small{color:#000}
+.planes{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.plan{border:2px solid var(--n3);padding:34px 30px;border-radius:6px;position:relative}
+.plan.top{border-color:var(--lima);background:linear-gradient(180deg,rgba(198,255,0,.08),transparent)}
+.plan .tg{position:absolute;top:-14px;right:24px;background:var(--lima);color:#000;font-weight:800;font-size:12px;letter-spacing:1px;text-transform:uppercase;padding:5px 12px;border-radius:4px}
+.plan h3{font-family:var(--anton);font-weight:400;font-size:38px;text-transform:uppercase}
+.plan .pr{font-family:var(--anton);font-size:clamp(44px,5vw,64px);line-height:1;margin:14px 0 4px;white-space:nowrap}
+.plan .pr small{font-family:Archivo;font-size:15px;color:var(--g);font-weight:600}
+.plan .per{color:var(--g);font-size:14px;margin-bottom:22px;min-height:21px}
+.plan ul{list-style:none;margin-bottom:28px}
+.plan li{padding:8px 0;border-bottom:1px solid var(--n3);font-size:15px}
+.plan li::before{content:"+ ";color:var(--lima);font-weight:800}
+.plan .btn{width:100%;justify-content:center}
+/* prueba */
+.prueba{position:relative;overflow:hidden;background:var(--lima);color:#000;padding:90px 0}
+.prueba h2{color:#000;margin-bottom:20px}
+.prueba p{font-size:19px;max-width:520px;margin-bottom:30px;font-weight:600}
+.prueba .btn{background:#000;color:var(--lima)}
+.prueba .big{position:absolute;right:-20px;bottom:-60px;font-family:var(--anton);font-size:300px;line-height:1;color:rgba(0,0,0,.08)}
+footer{padding:36px 0;color:var(--g);font-size:14px}
+footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+footer a{color:var(--lima)}
+.js .rv{opacity:0;transform:translateY(40px) skewY(2deg);transition:opacity .6s,transform .6s}
+.js .rv.in{opacity:1;transform:none}
+@media(max-width:1000px){.disc{grid-template-columns:1fr 1fr}.planes{grid-template-columns:1fr}header nav{display:none}.pesa{opacity:.25;width:90vw;right:-30vw}}
+@media(max-width:600px){
+  .disc{grid-template-columns:1fr}.d{min-height:180px}
+  .clase{grid-template-columns:70px 1fr;gap:6px 14px}
+  .clase .h{font-size:24px;grid-row:span 2}
+  .clase .cupo{grid-column:2}
+  .clase .r{grid-column:2;justify-self:start}
+  section{padding:80px 0}
+  header .btn{display:none}
+}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.js .rv{opacity:1;transform:none}}
+</style>
+<script>document.documentElement.classList.add('js')</script>
+</head>
+<body>
+<div class="demo">Página de demostración hecha por StackRD · <a href="https://wa.me/18293390257?text=Hola%2C%20quiero%20una%20p%C3%A1gina%20web%20para%20mi%20negocio." target="_blank" rel="noopener">¿Quieres una así para tu negocio?</a></div>
+<div style="position:relative">
+<header><div class="wrap">
+  <a class="logo" href="#">Forja<b>/</b>Fitness</a>
+  <nav><a href="#disciplinas">Disciplinas</a><a href="#horario">Horario</a><a href="#planes">Planes</a></nav>
+  <a class="btn" href="#prueba">Día de prueba</a>
+</div></header>
+
+<section class="hero"><div class="wrap" style="position:relative;z-index:2">
+  <h1 class="rv"><span class="o">Entrena</span><br>con <span class="l">propósito</span></h1>
+  <p class="rv">Pesas, funcional, spinning, boxeo y yoga en Santiago. Entrenadores que te corrigen, te empujan y te ayudan a no rendirte.</p>
+  <div class="acc rv"><a class="btn" href="#horario">Ver horario de clases</a><a class="btn out" href="#planes">Planes</a></div>
+  <div class="datos rv"><div><b>5:00 a.m.</b>Abrimos</div><div><b>5</b>Disciplinas</div><div><b>Lun–Dom</b>Abierto</div></div>
+</div>
+<svg class="pesa" viewBox="0 0 600 220" fill="none" aria-hidden="true"><rect x="40" y="30" width="56" height="160" rx="10" fill="#c6ff00"/><rect x="100" y="55" width="40" height="110" rx="8" fill="#1f1f1f" stroke="#c6ff00" stroke-width="3"/><rect x="140" y="98" width="320" height="24" rx="6" fill="#2a2a2a"/><g stroke="#3a3a3a" stroke-width="2"><path d="M170 98v24M200 98v24M230 98v24M260 98v24M290 98v24M320 98v24M350 98v24M380 98v24M410 98v24M440 98v24"/></g><rect x="460" y="55" width="40" height="110" rx="8" fill="#1f1f1f" stroke="#c6ff00" stroke-width="3"/><rect x="504" y="30" width="56" height="160" rx="10" fill="#c6ff00"/></svg>
+</section>
+</div>
+
+<div style="overflow:hidden;padding:24px 0"><div class="cinta" aria-hidden="true"><div>Sin excusas <span>✕</span> Más fuerte cada día <span>✕</span> Tu mejor versión <span>✕</span> Sin excusas <span>✕</span> Más fuerte cada día <span>✕</span> Tu mejor versión <span>✕</span></div></div></div>
+
+<section id="disciplinas"><div class="wrap">
+  <h2 class="rv">Disci<span>plinas</span></h2>
+  <div class="disc">
+    <div class="d rv"><span class="k">01</span><div><h3>Pesas</h3><p>Área de fuerza con máquinas y peso libre.</p></div></div>
+    <div class="d rv"><span class="k">02</span><div><h3>Funcional</h3><p>Circuitos de alta intensidad en grupo.</p></div></div>
+    <div class="d rv"><span class="k">03</span><div><h3>Spinning</h3><p>Cardio con música y bicicletas fijas.</p></div></div>
+    <div class="d rv"><span class="k">04</span><div><h3>Boxeo</h3><p>Técnica, sacos y acondicionamiento.</p></div></div>
+    <div class="d rv"><span class="k">05</span><div><h3>Yoga</h3><p>Movilidad, respiración y recuperación.</p></div></div>
+  </div>
+</div></section>
+
+<section id="horario" class="horario"><div class="wrap">
+  <h2 class="rv">Horario<br><span>de clases</span></h2>
+  <div class="tabs" id="tabs" role="tablist"></div>
+  <div class="fil" id="fil"></div>
+  <div class="clases" id="clases" aria-live="polite"></div>
+</div></section>
+
+<section id="planes"><div class="wrap">
+  <h2 class="rv">Pla<span>nes</span></h2>
+  <div class="toggle" id="toggle"><button class="on" data-m="1">Mensual</button><button data-m="3">Trimestral <small>Ahorra</small></button></div>
+  <div class="planes">
+    <div class="plan rv"><h3>Básico</h3><div class="pr" data-m1="1500" data-m3="4000"></div><div class="per"></div><ul><li>Área de pesas</li><li>Horario completo</li><li>Evaluación inicial</li></ul><a class="btn out" data-plan="Básico">Lo quiero</a></div>
+    <div class="plan top rv"><span class="tg">Más elegido</span><h3>Full</h3><div class="pr" data-m1="2500" data-m3="6600"></div><div class="per"></div><ul><li>Pesas y todas las clases</li><li>Horario completo</li><li>Plan de entrenamiento</li><li>Evaluación mensual</li></ul><a class="btn" data-plan="Full">Lo quiero</a></div>
+    <div class="plan rv"><h3>Clases</h3><div class="pr" data-m1="1800" data-m3="4800"></div><div class="per"></div><ul><li>Todas las clases grupales</li><li>Reserva por WhatsApp</li><li>Sin área de pesas</li></ul><a class="btn out" data-plan="Clases">Lo quiero</a></div>
+  </div>
+</div></section>
+
+<section id="prueba" class="prueba"><div class="wrap" style="position:relative;z-index:1">
+  <h2 class="rv">Tu primer día<br>va por nosotros</h2>
+  <p class="rv">Ven, conoce el espacio y entrena una clase. Sin compromiso.</p>
+  <a class="btn rv" data-wa="Hola, vi la demo de Forja Fitness y quiero mi día de prueba.">Reservar día de prueba</a>
+</div><span class="big" aria-hidden="true">GO</span></section>
+
+<footer><div class="wrap"><span>© Forja Fitness Club · Santiago de los Caballeros</span><span>Página hecha por <a href="https://wa.me/18293390257?text=Hola%2C%20vi%20una%20p%C3%A1gina%20hecha%20por%20StackRD%20y%20quiero%20una." target="_blank" rel="noopener">StackRD</a></span></div></footer>
+
+<script>
+const WA='18293390257',wa=m=>'https://wa.me/'+WA+'?text='+encodeURIComponent(m),fmt=n=>'RD$'+n.toLocaleString('en-US');
+document.querySelectorAll('[data-wa]').forEach(a=>{a.href=wa(a.dataset.wa);a.target='_blank';a.rel='noopener'});
+const dias=['Lunes','Martes','Miércoles','Jueves','Viernes','Sábado','Domingo'];
+const base={
+ 0:[['6:00 a.m.','Funcional','Coach Ramón'],['7:00 a.m.','Spinning','Coach Laura'],['12:15 p.m.','Funcional','Coach Ramón'],['6:00 p.m.','Boxeo','Coach Javier'],['7:00 p.m.','Spinning','Coach Laura'],['8:00 p.m.','Yoga','Coach Ana']],
+ 1:[['6:00 a.m.','Spinning','Coach Laura'],['7:00 a.m.','Yoga','Coach Ana'],['5:30 p.m.','Funcional','Coach Ramón'],['6:30 p.m.','Boxeo','Coach Javier'],['7:30 p.m.','Funcional','Coach Ramón']],
+ 5:[['8:00 a.m.','Funcional','Coach Ramón'],['9:00 a.m.','Spinning','Coach Laura'],['10:00 a.m.','Yoga','Coach Ana'],['11:00 a.m.','Boxeo','Coach Javier']],
+ 6:[['9:00 a.m.','Yoga','Coach Ana'],['10:00 a.m.','Funcional','Coach Ramón']]};
+const H=i=>base[i]||base[i%2];
+let di=(new Date().getDay()+6)%7,dis='Todas';
+const T=document.getElementById('tabs'),F=document.getElementById('fil'),C=document.getElementById('clases');
+T.innerHTML=dias.map((d,i)=>`<button role="tab" data-i="${i}" class="${i===di?'on':''}">${d}</button>`).join('');
+F.innerHTML=['Todas','Funcional','Spinning','Boxeo','Yoga'].map(x=>`<button data-d="${x}" class="${x===dis?'on':''}">${x}</button>`).join('');
+T.onclick=e=>{const b=e.target.closest('button');if(!b)return;di=+b.dataset.i;T.querySelectorAll('button').forEach(x=>x.classList.toggle('on',x===b));pinta()};
+F.onclick=e=>{const b=e.target.closest('button');if(!b)return;dis=b.dataset.d;F.querySelectorAll('button').forEach(x=>x.classList.toggle('on',x===b));pinta()};
+function pinta(){const l=H(di).filter(c=>dis==='Todas'||c[1]===dis);
+ C.innerHTML=l.length?l.map(c=>`<a class="clase" target="_blank" rel="noopener" href="${wa(`Hola, vi la demo de Forja Fitness y quiero reservar la clase de ${c[1]} del ${dias[di].toLowerCase()} a las ${c[0]} con ${c[2]}.`)}"><span class="h">${c[0].replace(' a.m.','').replace(' p.m.','')}<small style="font-family:Archivo;font-size:12px">${c[0].slice(-4)}</small></span><b>${c[1]}<small>${c[2]} · 50 min</small></b><span class="cupo">Cupos limitados</span><span class="r">Reservar</span></a>`).join(''):`<p class="nada">No hay clases de ${dis} este día. Prueba otro día.</p>`}
+pinta();
+let m=1;const tg=document.getElementById('toggle');
+tg.onclick=e=>{const b=e.target.closest('button');if(!b)return;m=+b.dataset.m;tg.querySelectorAll('button').forEach(x=>x.classList.toggle('on',x===b));precios()};
+function precios(){document.querySelectorAll('.plan').forEach(p=>{const pr=p.querySelector('.pr'),v=+pr.dataset['m'+m];pr.innerHTML=fmt(v)+` <small>/${m===1?'mes':'3 meses'}</small>`;
+ p.querySelector('.per').textContent=m===3?'Equivale a '+fmt(Math.round(v/3))+' al mes':'';
+ const a=p.querySelector('.btn');a.href=wa(`Hola, vi la demo de Forja Fitness y me interesa el plan ${a.dataset.plan} ${m===1?'mensual':'trimestral'} (${fmt(v)}).`);a.target='_blank';a.rel='noopener'})}
+precios();
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.1});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>

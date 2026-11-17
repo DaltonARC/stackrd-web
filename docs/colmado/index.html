@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Minimarket El Surtido | Pide desde tu casa en Santiago</title>
+<meta name="description" content="Víveres, bebidas, limpieza, carnes, frutas y vegetales con delivery en Santiago. Arma tu pedido y envíalo por WhatsApp.">
+<meta property="og:title" content="Minimarket El Surtido">
+<meta property="og:description" content="Pide desde tu casa. Arma tu pedido y envíalo por WhatsApp.">
+<meta property="og:image" content="https://daltonarc.github.io/stackrd-web/colmado/og.png">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#e8322b">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Nunito:wght@500;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--rojo:#e8322b;--rojo2:#c4231d;--amarillo:#ffcc1f;--verde:#1fa35c;--crema:#fff8ec;--tinta:#2b1d14;--gris:#7b6f66;--linea:#f0e4d0;--baloo:'Baloo 2',system-ui,sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Nunito,system-ui,sans-serif;background:var(--crema);color:var(--tinta);line-height:1.5;padding-bottom:96px}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+.demo{background:var(--tinta);color:#f3e6d3;font-size:12.5px;text-align:center;padding:7px 12px}
+.demo a{color:var(--amarillo);font-weight:800}
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px}
+/* top */
+.top{background:var(--rojo);color:#fff;position:relative;overflow:hidden}
+.top::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:26px;background:radial-gradient(circle at 13px -2px,transparent 14px,var(--crema) 15px) 0 0/26px 26px repeat-x}
+.barra{display:flex;justify-content:space-between;align-items:center;padding:16px 0}
+.logo{display:flex;align-items:center;gap:10px;font-family:var(--baloo);font-weight:800;font-size:24px;line-height:1}
+.logo .ic{width:46px;height:46px;border-radius:14px;background:var(--amarillo);display:grid;place-items:center;font-size:26px;transform:rotate(-6deg);box-shadow:3px 3px 0 var(--rojo2)}
+.logo small{display:block;font-family:Nunito;font-size:12px;font-weight:700;opacity:.85}
+.abierto{background:rgba(255,255,255,.18);border-radius:999px;padding:8px 14px;font-weight:800;font-size:13px;display:flex;gap:8px;align-items:center}
+.abierto i{width:9px;height:9px;border-radius:50%;background:#7dff9c}
+.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:30px;align-items:center;padding:30px 0 70px}
+.hero h1{font-family:var(--baloo);font-weight:800;font-size:clamp(44px,7vw,84px);line-height:.95}
+.hero h1 span{color:var(--amarillo);display:inline-block;transform:rotate(-3deg)}
+.hero p{font-size:18px;opacity:.92;max-width:460px;margin:16px 0 24px;font-weight:700}
+.chips{display:flex;gap:10px;flex-wrap:wrap}
+.chips span{background:#fff;color:var(--tinta);border-radius:999px;padding:8px 14px;font-weight:800;font-size:14px;box-shadow:0 3px 0 var(--rojo2)}
+.canasta{position:relative;height:320px}
+.burbuja{position:absolute;display:grid;place-items:center;border-radius:50%;background:#fff;box-shadow:0 8px 0 var(--rojo2);font-size:54px;animation:flota 4s ease-in-out infinite}
+.burbuja:nth-child(1){width:150px;height:150px;left:20%;top:10%;font-size:80px}
+.burbuja:nth-child(2){width:100px;height:100px;left:62%;top:0;animation-delay:-1s;background:var(--amarillo)}
+.burbuja:nth-child(3){width:110px;height:110px;left:58%;top:52%;animation-delay:-2s}
+.burbuja:nth-child(4){width:90px;height:90px;left:8%;top:62%;animation-delay:-3s;background:#9fe3b8}
+.burbuja:nth-child(5){width:76px;height:76px;left:38%;top:68%;animation-delay:-1.5s;background:var(--amarillo);font-size:40px}
+@keyframes flota{50%{transform:translateY(-10px) rotate(3deg)}}
+/* buscador */
+.buscar{position:sticky;top:0;z-index:20;background:var(--crema);padding:14px 0 10px}
+.inp{display:flex;align-items:center;gap:10px;background:#fff;border:2.5px solid var(--tinta);border-radius:16px;padding:0 16px;box-shadow:4px 4px 0 var(--tinta)}
+.inp input{flex:1;border:0;font:inherit;font-size:17px;font-weight:700;padding:14px 0;background:none;min-width:0}
+.inp input:focus{outline:none}
+.cats{display:flex;gap:10px;overflow-x:auto;padding:14px 2px 6px;scrollbar-width:none}
+.cats::-webkit-scrollbar{display:none}
+.cats button{flex:0 0 auto;display:flex;align-items:center;gap:8px;background:#fff;border:2.5px solid var(--linea);border-radius:999px;padding:8px 16px 8px 10px;font-weight:800;font-size:15px;transition:all .2s}
+.cats button span{font-size:22px}
+.cats button.on{background:var(--tinta);color:#fff;border-color:var(--tinta)}
+/* productos */
+.cuenta{font-weight:800;color:var(--gris);font-size:14px;margin:10px 0 14px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:14px}
+.p{background:#fff;border-radius:20px;padding:14px;border:2.5px solid var(--linea);display:flex;flex-direction:column;transition:border-color .2s,transform .2s}
+.p.en{border-color:var(--verde)}
+.p .em{height:96px;border-radius:14px;display:grid;place-items:center;font-size:54px;margin-bottom:10px}
+.p h3{font-size:15px;font-weight:800;line-height:1.25}
+.p small{color:var(--gris);font-weight:700;font-size:13px}
+.p .pie{display:flex;justify-content:space-between;align-items:center;margin-top:auto;padding-top:10px}
+.p .pr{font-family:var(--baloo);font-weight:800;font-size:21px}
+.mas{width:42px;height:42px;border-radius:14px;background:var(--rojo);color:#fff;font-size:26px;font-weight:800;display:grid;place-items:center;box-shadow:0 4px 0 var(--rojo2);transition:transform .1s}
+.mas:active{transform:translateY(3px);box-shadow:0 1px 0 var(--rojo2)}
+.ctl{display:flex;align-items:center;gap:6px;background:var(--verde);border-radius:14px;padding:3px;color:#fff}
+.ctl button{width:36px;height:36px;border-radius:11px;font-size:22px;font-weight:800;display:grid;place-items:center}
+.ctl button:hover{background:rgba(255,255,255,.2)}
+.ctl b{min-width:20px;text-align:center;font-size:17px}
+.nada{text-align:center;padding:40px 10px;color:var(--gris);font-weight:700}
+/* como */
+.como{padding:70px 0 40px}
+.como h2,.horario h2{font-family:var(--baloo);font-weight:800;font-size:clamp(32px,5vw,48px);line-height:1;margin-bottom:24px}
+.pasos{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.paso{border-radius:22px;padding:24px;color:#fff;position:relative;overflow:hidden}
+.paso:nth-child(1){background:var(--rojo)}.paso:nth-child(2){background:var(--verde)}.paso:nth-child(3){background:var(--amarillo);color:var(--tinta)}
+.paso b{font-family:var(--baloo);font-size:56px;line-height:1;opacity:.35;position:absolute;right:18px;top:8px}
+.paso span{font-size:36px}
+.paso h3{font-family:var(--baloo);font-size:24px;margin-top:6px}
+.paso p{font-weight:700;opacity:.9}
+.horario{padding:40px 0 60px}
+.hrs{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.hrs div{background:#fff;border:2.5px solid var(--linea);border-radius:22px;padding:22px}
+.hrs h3{font-family:var(--baloo);font-size:22px}
+.hrs p{color:var(--gris);font-weight:700}
+footer{text-align:center;color:var(--gris);font-weight:700;font-size:14px;padding:20px 0 30px}
+footer a{color:var(--rojo)}
+/* barra carrito */
+.carro{position:fixed;left:0;right:0;bottom:0;z-index:30;padding:12px 16px calc(12px + env(safe-area-inset-bottom));pointer-events:none}
+.carro .in{max-width:760px;margin:0 auto;background:var(--tinta);color:#fff;border-radius:20px;display:flex;align-items:center;gap:14px;padding:10px 10px 10px 18px;box-shadow:0 12px 30px rgba(43,29,20,.35);transform:translateY(130%);transition:transform .35s cubic-bezier(.2,.9,.3,1.2);pointer-events:auto}
+.carro.on .in{transform:none}
+.carro .n{background:var(--amarillo);color:var(--tinta);border-radius:12px;font-weight:800;min-width:34px;height:34px;display:grid;place-items:center}
+.carro .t{flex:1;font-weight:800}
+.carro .t small{display:block;opacity:.7;font-size:12px}
+.carro .go{background:var(--verde);border-radius:14px;padding:12px 18px;font-weight:800}
+/* hoja */
+.velo{position:fixed;inset:0;background:rgba(43,29,20,.5);z-index:40;opacity:0;pointer-events:none;transition:opacity .3s}
+.velo.on{opacity:1;pointer-events:auto}
+.hoja{position:fixed;left:0;right:0;bottom:0;z-index:50;background:var(--crema);border-radius:26px 26px 0 0;max-height:90vh;overflow:auto;transform:translateY(100%);transition:transform .35s cubic-bezier(.2,.8,.2,1);max-width:640px;margin:0 auto}
+.hoja.on{transform:none}
+.hoja .asa{width:46px;height:5px;border-radius:9px;background:#d9c9b2;margin:10px auto 0}
+.hoja .cont{padding:16px 22px 26px}
+.hoja h2{font-family:var(--baloo);font-size:30px;display:flex;justify-content:space-between;align-items:center}
+.hoja h2 button{font-size:30px;color:var(--gris)}
+.lin{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:2px dashed var(--linea)}
+.lin .e{font-size:28px;width:44px;height:44px;border-radius:12px;background:#fff;display:grid;place-items:center}
+.lin div{flex:1;font-weight:800;font-size:15px}
+.lin div small{display:block;color:var(--gris);font-weight:700}
+.lin .ctl button{width:30px;height:30px;font-size:18px}
+.tot{display:flex;justify-content:space-between;font-family:var(--baloo);font-weight:800;font-size:24px;margin:14px 0}
+.f label{display:block;font-weight:800;font-size:14px;margin:12px 0 6px}
+.f input,.f textarea{width:100%;font:inherit;font-weight:700;font-size:16px;border:2.5px solid var(--linea);border-radius:14px;padding:12px 14px;background:#fff}
+.f input:focus,.f textarea:focus{outline:none;border-color:var(--tinta)}
+.pagos{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.pagos button{border:2.5px solid var(--linea);border-radius:14px;padding:12px;font-weight:800;background:#fff}
+.pagos button.on{border-color:var(--verde);background:#e5f7ec;color:var(--verde)}
+.enviar{display:block;text-align:center;background:var(--verde);color:#fff;border-radius:16px;padding:16px;font-weight:800;font-size:17px;margin-top:18px;box-shadow:0 5px 0 #157a43}
+.enviar[aria-disabled=true]{opacity:.4;pointer-events:none}
+.nota{text-align:center;color:var(--gris);font-size:13px;font-weight:700;margin-top:10px}
+.js .rv{opacity:0;transform:translateY(20px) scale(.98);transition:opacity .5s,transform .5s}
+.js .rv.in{opacity:1;transform:none}
+@media(max-width:760px){
+  .hero{grid-template-columns:1fr;padding-bottom:50px}
+  .canasta{height:200px}
+  .burbuja:nth-child(1){width:110px;height:110px;font-size:60px}
+  .burbuja{transform:scale(.8)}
+  .grid{grid-template-columns:1fr 1fr;gap:10px}
+  .pasos,.hrs{grid-template-columns:1fr}
+  .abierto span{display:none}
+}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.js .rv{opacity:1;transform:none}}
+</style>
+<script>document.documentElement.classList.add('js')</script>
+</head>
+<body>
+<div class="demo">Página de demostración hecha por StackRD · <a href="https://wa.me/18293390257?text=Hola%2C%20quiero%20una%20p%C3%A1gina%20web%20para%20mi%20negocio." target="_blank" rel="noopener">¿Quieres una así para tu negocio?</a></div>
+
+<header class="top"><div class="wrap">
+  <div class="barra">
+    <a class="logo" href="#"><span class="ic">🛒</span><span>El Surtido<small>Minimarket · Santiago</small></span></a>
+    <div class="abierto" id="abierto"><i></i><span>Abierto hasta las 10:00 p.m.</span></div>
+  </div>
+  <div class="hero">
+    <div class="rv">
+      <h1>Pide desde<br>tu <span>casa</span></h1>
+      <p>Víveres, bebidas, carnes y más. Arma tu pedido aquí, lo mandas por WhatsApp y te lo llevamos.</p>
+      <div class="chips"><span>🛵 Delivery rápido</span><span>💵 Efectivo</span><span>🏦 Transferencia</span></div>
+    </div>
+    <div class="canasta rv" aria-hidden="true"><div class="burbuja">🧺</div><div class="burbuja">🍌</div><div class="burbuja">🥤</div><div class="burbuja">🥑</div><div class="burbuja">🍞</div></div>
+  </div>
+</div></header>
+
+<main class="wrap" id="productos">
+  <div class="buscar">
+    <label class="inp"><span aria-hidden="true">🔎</span><input id="q" type="search" placeholder="Busca arroz, salami, cerveza…" aria-label="Buscar productos"></label>
+    <div class="cats" id="cats"></div>
+  </div>
+  <p class="cuenta" id="cuenta"></p>
+  <div class="grid" id="grid"></div>
+</main>
+
+<section class="como"><div class="wrap">
+  <h2 class="rv">¿Cómo funciona?</h2>
+  <div class="pasos">
+    <div class="paso rv"><b>1</b><span>🛒</span><h3>Arma tu pedido</h3><p>Toca + en lo que necesites.</p></div>
+    <div class="paso rv"><b>2</b><span>📲</span><h3>Envíalo</h3><p>Tu lista llega a nuestro WhatsApp con el total.</p></div>
+    <div class="paso rv"><b>3</b><span>🛵</span><h3>Recíbelo</h3><p>Te confirmamos y salimos para tu casa.</p></div>
+  </div>
+</div></section>
+
+<section class="horario"><div class="wrap">
+  <h2 class="rv">Horario y delivery</h2>
+  <div class="hrs">
+    <div class="rv"><h3>🕗 Horario</h3><p>Lunes a sábado: 7:00 a.m. – 10:00 p.m.<br>Domingo: 8:00 a.m. – 2:00 p.m.</p></div>
+    <div class="rv"><h3>🛵 Delivery</h3><p>Llevamos en los sectores cercanos. El costo depende de la distancia y te lo confirmamos al recibir tu pedido.</p></div>
+  </div>
+</div></section>
+
+<footer>© Minimarket El Surtido · Santiago de los Caballeros<br>Página hecha por <a href="https://wa.me/18293390257?text=Hola%2C%20vi%20una%20p%C3%A1gina%20hecha%20por%20StackRD%20y%20quiero%20una." target="_blank" rel="noopener">StackRD</a></footer>
+
+<div class="carro" id="carro"><div class="in"><span class="n" id="n">0</span><span class="t"><small>Tu pedido</small><span id="tt">RD$0</span></span><button class="go" id="ver">Ver pedido →</button></div></div>
+<div class="velo" id="velo"></div>
+<div class="hoja" id="hoja" role="dialog" aria-modal="true" aria-label="Tu pedido"><div class="asa"></div><div class="cont">
+  <h2>Tu pedido <button id="cerrar" aria-label="Cerrar">×</button></h2>
+  <div id="lineas"></div>
+  <div class="tot"><span>Total</span><span id="total">RD$0</span></div>
+  <div class="f">
+    <label for="nom">Tu nombre</label><input id="nom" autocomplete="name" placeholder="Ej. María">
+    <label for="dir">Dirección de entrega</label><textarea id="dir" rows="2" placeholder="Calle, número, sector y una referencia"></textarea>
+    <label>¿Cómo vas a pagar?</label>
+    <div class="pagos" id="pagos"><button class="on" type="button">💵 Efectivo</button><button type="button">🏦 Transferencia</button></div>
+  </div>
+  <a class="enviar" id="enviar" target="_blank" rel="noopener" aria-disabled="true">Enviar pedido por WhatsApp</a>
+  <p class="nota" id="nota">Escribe tu nombre y dirección para enviar.</p>
+</div></div>
+
+<script>
+const WA='18293390257',wa=m=>'https://wa.me/'+WA+'?text='+encodeURIComponent(m),fmt=n=>'RD$'+n.toLocaleString('en-US');
+const CATS=[['todo','🧺','Todo'],['viveres','🍚','Víveres'],['bebidas','🥤','Bebidas'],['limpieza','🧼','Limpieza'],['carnes','🥩','Carnes'],['frutas','🥑','Frutas y vegetales']];
+const BG={viveres:'#fff1c9',bebidas:'#dff1ff',limpieza:'#e7f6ee',carnes:'#ffe2df',frutas:'#e9f8d9'};
+const P=[
+ ['Arroz selecto','5 lb','viveres','🍚',225],['Habichuelas rojas','1 lb','viveres','🫘',95],['Aceite de soya','1 litro','viveres','🫗',260],['Pan de agua','6 unidades','viveres','🥖',60],
+ ['Espaguetis','1 lb','viveres','🍝',55],['Huevos','Cartón de 30','viveres','🥚',290],['Azúcar crema','2 lb','viveres','🍬',90],['Café molido','1 lb','viveres','☕',310],
+ ['Leche entera','1 litro','viveres','🥛',85],['Agua','Botellón 5 gal','bebidas','💧',80],['Refresco de cola','2 litros','bebidas','🥤',110],['Jugo de naranja','1 litro','bebidas','🧃',120],
+ ['Cerveza','Pack de 6','bebidas','🍺',650],['Malta','Lata','bebidas','🥫',55],['Detergente en polvo','2 kg','limpieza','🧺',340],['Cloro','1 galón','limpieza','🧴',120],
+ ['Jabón de cuaba','Barra','limpieza','🧼',45],['Papel de baño','Paquete de 4','limpieza','🧻',135],['Lavaplatos','Pote','limpieza','🫧',95],['Salami','1 lb','carnes','🥓',165],
+ ['Pollo entero','Aprox. 4 lb','carnes','🍗',420],['Carne molida','1 lb','carnes','🥩',260],['Queso de freír','1 lb','carnes','🧀',240],['Plátanos verdes','3 unidades','frutas','🍌',75],
+ ['Aguacates','2 unidades','frutas','🥑',110],['Tomates','1 lb','frutas','🍅',70],['Cebollas','1 lb','frutas','🧅',60],['Limones','6 unidades','frutas','🍋',50]
+].map((x,i)=>({i,n:x[0],u:x[1],c:x[2],e:x[3],p:x[4]}));
+const Q={};let cat='todo',pago='Efectivo';
+const G=document.getElementById('grid'),C=document.getElementById('cats');
+C.innerHTML=CATS.map(c=>`<button data-c="${c[0]}" class="${c[0]===cat?'on':''}"><span>${c[1]}</span>${c[2]}</button>`).join('');
+C.onclick=e=>{const b=e.target.closest('button');if(!b)return;cat=b.dataset.c;C.querySelectorAll('button').forEach(x=>x.classList.toggle('on',x===b));pinta()};
+document.getElementById('q').oninput=pinta;
+const ctl=x=>Q[x.i]?`<div class="ctl"><button data-i="${x.i}" data-d="-1" aria-label="Quitar uno">−</button><b>${Q[x.i]}</b><button data-i="${x.i}" data-d="1" aria-label="Agregar uno">+</button></div>`:`<button class="mas" data-i="${x.i}" data-d="1" aria-label="Agregar ${x.n}">+</button>`;
+function pinta(){const q=document.getElementById('q').value.trim().toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'');
+ const l=P.filter(x=>(cat==='todo'||x.c===cat)&&(!q||(x.n+' '+x.u).toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').includes(q)));
+ document.getElementById('cuenta').textContent=l.length+' producto'+(l.length===1?'':'s');
+ G.innerHTML=l.length?l.map(x=>`<div class="p ${Q[x.i]?'en':''}" id="p${x.i}"><div class="em" style="background:${BG[x.c]}">${x.e}</div><h3>${x.n}</h3><small>${x.u}</small><div class="pie"><span class="pr">${fmt(x.p)}</span><span class="c">${ctl(x)}</span></div></div>`).join(''):'<p class="nada" style="grid-column:1/-1">No encontramos eso 😕<br>Escríbelo en tu pedido y te decimos si lo tenemos.</p>'}
+function cambia(i,d){Q[i]=(Q[i]||0)+d;if(Q[i]<=0)delete Q[i];const el=document.getElementById('p'+i);if(el){el.classList.toggle('en',!!Q[i]);el.querySelector('.c').innerHTML=ctl(P[i])}resumen()}
+G.onclick=e=>{const b=e.target.closest('button[data-i]');if(b)cambia(+b.dataset.i,+b.dataset.d)};
+document.getElementById('lineas').onclick=e=>{const b=e.target.closest('button[data-i]');if(b){cambia(+b.dataset.i,+b.dataset.d);hojaPinta()}};
+const items=()=>Object.keys(Q).map(i=>({x:P[i],q:Q[i]}));
+function resumen(){const it=items(),n=it.reduce((a,b)=>a+b.q,0),t=it.reduce((a,b)=>a+b.q*b.x.p,0);
+ document.getElementById('n').textContent=n;document.getElementById('tt').textContent=fmt(t);document.getElementById('carro').classList.toggle('on',n>0);
+ if(!n&&hoja.classList.contains('on'))abre(false);hojaPinta()}
+const hoja=document.getElementById('hoja'),velo=document.getElementById('velo');
+function abre(v){hoja.classList.toggle('on',v);velo.classList.toggle('on',v);if(v)hojaPinta()}
+document.getElementById('ver').onclick=()=>abre(true);document.getElementById('cerrar').onclick=()=>abre(false);velo.onclick=()=>abre(false);
+document.addEventListener('keydown',e=>{if(e.key==='Escape')abre(false)});
+document.getElementById('pagos').onclick=e=>{const b=e.target.closest('button');if(!b)return;pago=b.textContent.replace(/^\S+\s/,'');document.querySelectorAll('#pagos button').forEach(x=>x.classList.toggle('on',x===b));hojaPinta()};
+['nom','dir'].forEach(id=>document.getElementById(id).oninput=hojaPinta);
+function hojaPinta(){const it=items(),t=it.reduce((a,b)=>a+b.q*b.x.p,0);
+ document.getElementById('lineas').innerHTML=it.map(({x,q})=>`<div class="lin"><span class="e">${x.e}</span><div>${x.n}<small>${x.u} · ${fmt(x.p*q)}</small></div><div class="ctl" style="flex:0"><button data-i="${x.i}" data-d="-1" aria-label="Quitar uno">−</button><b>${q}</b><button data-i="${x.i}" data-d="1" aria-label="Agregar uno">+</button></div></div>`).join('');
+ document.getElementById('total').textContent=fmt(t);
+ const nom=document.getElementById('nom').value.trim(),dir=document.getElementById('dir').value.trim(),ok=it.length&&nom&&dir;
+ const b=document.getElementById('enviar');b.setAttribute('aria-disabled',ok?'false':'true');
+ document.getElementById('nota').textContent=ok?'Te confirmamos el pedido y el costo del delivery por WhatsApp.':'Escribe tu nombre y dirección para enviar.';
+ b.href=wa(`Hola, vi la demo de El Surtido y quiero hacer este pedido:\n${it.map(({x,q})=>`• ${q} x ${x.n} (${x.u}) – ${fmt(x.p*q)}`).join('\n')}\nTotal: ${fmt(t)}\nNombre: ${nom}\nDirección: ${dir}\nPago: ${pago}`)}
+(function(){const n=new Date(),d=n.getDay(),h=n.getHours();const ab=d===0?(h>=8&&h<14):(h>=7&&h<22);const el=document.getElementById('abierto');
+ el.querySelector('span').textContent=ab?(d===0?'Abierto hasta las 2:00 p.m.':'Abierto hasta las 10:00 p.m.'):'Cerrado ahora · recibimos pedidos';if(!ab)el.querySelector('i').style.background='#ffd27d'})();
+pinta();resumen();
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.1});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>

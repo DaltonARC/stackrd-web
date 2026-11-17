@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nativa Studio | Tienda de ropa en Santiago</title>
+<meta name="description" content="Ropa y accesorios para mujer y hombre en Santiago. Arma tu pedido y envíalo por WhatsApp.">
+<meta property="og:title" content="Nativa Studio">
+<meta property="og:description" content="Colección nueva. Arma tu pedido y envíalo por WhatsApp.">
+<meta property="og:image" content="https://daltonarc.github.io/stackrd-web/tienda/og.png">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--n:#0e0e0e;--b:#fff;--g:#f2f2f0;--l:#e4e4e1;--m:#767672;--acento:#ff5a36;--syne:'Syne',sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',system-ui,sans-serif;background:var(--b);color:var(--n);line-height:1.5}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+.demo{background:var(--n);color:#ddd;font-size:12.5px;text-align:center;padding:7px 12px}
+.demo a{color:var(--acento);font-weight:700}
+.aviso{background:var(--acento);color:#fff;font-size:13px;text-align:center;padding:8px;letter-spacing:.3px}
+.wrap{max-width:1320px;margin:0 auto;padding:0 28px}
+header{position:sticky;top:0;z-index:30;background:rgba(255,255,255,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--l)}
+header .wrap{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;height:70px}
+header nav{display:flex;gap:26px;font-size:14px;font-weight:500}
+header nav a:hover{color:var(--acento)}
+.logo{font-family:var(--syne);font-weight:800;font-size:26px;letter-spacing:-1px;text-transform:lowercase}
+.logo i{font-style:normal;color:var(--acento)}
+.carbtn{justify-self:end;display:flex;align-items:center;gap:10px;font-weight:700;font-size:14px;border:1.5px solid var(--n);border-radius:999px;padding:9px 16px;transition:background .2s,color .2s}
+.carbtn:hover{background:var(--n);color:#fff}
+.carbtn b{background:var(--acento);color:#fff;border-radius:999px;min-width:22px;height:22px;display:grid;place-items:center;font-size:12px;padding:0 6px}
+.carbtn.bump{animation:bump .4s}
+@keyframes bump{40%{transform:scale(1.12)}}
+/* hero */
+.hero{display:grid;grid-template-columns:1fr 1fr;min-height:620px;border-bottom:1px solid var(--l)}
+.hero .txt{padding:70px 56px 60px max(28px,calc((100vw - 1320px)/2 + 28px));display:flex;flex-direction:column;justify-content:space-between}
+.hero small{font-size:12px;letter-spacing:3px;text-transform:uppercase;color:var(--m)}
+.hero h1{font-family:var(--syne);font-weight:800;font-size:clamp(54px,8.5vw,128px);line-height:.88;letter-spacing:-4px;margin:24px 0}
+.hero h1 span{color:var(--acento)}
+.hero p{max-width:380px;color:var(--m);font-size:17px;margin-bottom:28px}
+.cta{display:inline-flex;align-items:center;gap:14px;background:var(--n);color:#fff;padding:18px 28px;font-weight:700;font-size:15px;border-radius:999px;transition:gap .25s,background .2s}
+.cta:hover{gap:22px;background:var(--acento)}
+.hero .img{position:relative;background:#e9e4dc;overflow:hidden;display:grid;place-items:center}
+.hero .img svg{width:78%;max-width:520px}
+.hero .chip{position:absolute;left:28px;bottom:28px;background:#fff;padding:14px 18px;border-radius:14px;font-size:14px;box-shadow:0 10px 30px rgba(0,0,0,.08)}
+.hero .chip b{display:block;font-family:var(--syne);font-size:18px}
+.marquee{overflow:hidden;white-space:nowrap;border-bottom:1px solid var(--l);padding:18px 0}
+.marquee div{display:inline-block;font-family:var(--syne);font-weight:700;font-size:22px;animation:mq 30s linear infinite}
+.marquee span{color:var(--acento);margin:0 22px}
+@keyframes mq{to{transform:translateX(-50%)}}
+/* categorias */
+.cats{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;padding:70px 0 20px}
+.cat{position:relative;height:300px;border-radius:22px;overflow:hidden;display:flex;align-items:flex-end;padding:24px;cursor:pointer}
+.cat svg{position:absolute;inset:0;margin:auto;height:72%;transition:transform .5s}
+.cat:hover svg{transform:scale(1.06) rotate(-2deg)}
+.cat h3{position:relative;font-family:var(--syne);font-weight:800;font-size:34px;letter-spacing:-1px}
+.cat span{position:relative;margin-left:auto;background:#fff;border-radius:999px;padding:8px 14px;font-size:13px;font-weight:700}
+/* catalogo */
+#catalogo{padding:60px 0 90px}
+.bar{display:flex;justify-content:space-between;align-items:end;gap:20px;flex-wrap:wrap;margin-bottom:28px}
+.bar h2{font-family:var(--syne);font-weight:800;font-size:clamp(36px,5vw,58px);letter-spacing:-2px;line-height:1}
+.filtros{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.filtros button{border:1.5px solid var(--l);border-radius:999px;padding:9px 16px;font-size:14px;font-weight:500;transition:all .2s}
+.filtros button.on{background:var(--n);border-color:var(--n);color:#fff}
+select{font:inherit;font-size:14px;border:1.5px solid var(--l);border-radius:999px;padding:9px 14px;background:#fff}
+.cuenta{font-size:14px;color:var(--m);margin-bottom:18px}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:28px 18px}
+.prod{display:flex;flex-direction:column}
+.prod .foto{position:relative;aspect-ratio:4/5;border-radius:18px;overflow:hidden;display:grid;place-items:center;margin-bottom:12px}
+.prod .foto svg{width:66%;transition:transform .5s}
+.prod:hover .foto svg{transform:scale(1.06)}
+.prod .tag{position:absolute;top:12px;left:12px;background:#fff;border-radius:999px;font-size:11.5px;font-weight:700;padding:5px 10px;letter-spacing:.5px;text-transform:uppercase}
+.prod .tag.oferta{background:var(--acento);color:#fff}
+.prod h3{font-size:15.5px;font-weight:500}
+.prod .pr{font-weight:700;font-size:15.5px}
+.prod .pr s{color:var(--m);font-weight:400;margin-left:6px;font-size:14px}
+.opc{display:flex;gap:6px;margin:10px 0 6px;flex-wrap:wrap}
+.opc button{min-width:34px;height:30px;border:1.5px solid var(--l);border-radius:8px;font-size:12.5px;font-weight:700;padding:0 6px}
+.opc button.on{border-color:var(--n);background:var(--n);color:#fff}
+.cols{display:flex;gap:8px;margin-bottom:12px}
+.cols button{width:22px;height:22px;border-radius:50%;border:2px solid #fff;box-shadow:0 0 0 1.5px var(--l)}
+.cols button.on{box-shadow:0 0 0 2px var(--n)}
+.add{margin-top:auto;border:1.5px solid var(--n);border-radius:999px;padding:11px;font-weight:700;font-size:14px;transition:background .2s,color .2s}
+.add:hover{background:var(--n);color:#fff}
+.add.ok{background:var(--acento);border-color:var(--acento);color:#fff}
+/* como comprar */
+.como{background:var(--g);padding:90px 0}
+.como h2{font-family:var(--syne);font-weight:800;font-size:clamp(34px,4.5vw,54px);letter-spacing:-2px;line-height:1;margin-bottom:40px;max-width:640px}
+.pasos{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.paso{background:#fff;border-radius:20px;padding:26px}
+.paso b{font-family:var(--syne);font-size:44px;color:var(--acento);line-height:1}
+.paso h3{margin:14px 0 6px;font-size:17px}
+.paso p{color:var(--m);font-size:14.5px}
+.envios{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:18px}
+.envios div{background:var(--n);color:#fff;border-radius:20px;padding:28px}
+.envios h3{font-family:var(--syne);font-size:24px;margin-bottom:6px}
+.envios p{color:#bbb;font-size:15px}
+footer{padding:44px 0;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:14px;color:var(--m)}
+footer a{color:var(--n);font-weight:700}
+/* carrito */
+.velo{position:fixed;inset:0;background:rgba(0,0,0,.4);opacity:0;pointer-events:none;transition:opacity .3s;z-index:40}
+.velo.on{opacity:1;pointer-events:auto}
+.cajon{position:fixed;top:0;right:0;height:100%;width:min(420px,100%);background:#fff;z-index:50;transform:translateX(100%);transition:transform .35s cubic-bezier(.2,.8,.2,1);display:flex;flex-direction:column}
+.cajon.on{transform:none}
+.cajon header{position:static;display:flex;justify-content:space-between;align-items:center;padding:20px 24px;height:auto}
+.cajon h2{font-family:var(--syne);font-size:26px}
+.cerrar{font-size:28px;line-height:1}
+.items{flex:1;overflow:auto;padding:8px 24px}
+.it{display:grid;grid-template-columns:70px 1fr auto;gap:14px;padding:14px 0;border-bottom:1px solid var(--l);align-items:center}
+.it .mini{width:70px;height:84px;border-radius:12px;display:grid;place-items:center}
+.it .mini svg{width:70%}
+.it h4{font-size:14.5px;font-weight:500}
+.it small{color:var(--m);font-size:13px}
+.qty{display:flex;align-items:center;gap:10px;margin-top:6px}
+.qty button{width:28px;height:28px;border:1.5px solid var(--l);border-radius:8px;font-weight:700}
+.it .pr{font-weight:700;font-size:14.5px}
+.vacio{text-align:center;color:var(--m);padding:60px 10px}
+.pie{border-top:1px solid var(--l);padding:20px 24px 24px}
+.pie .t{display:flex;justify-content:space-between;font-size:18px;font-weight:700;margin-bottom:14px}
+.pie input,.pie select{width:100%;border:1.5px solid var(--l);border-radius:12px;padding:12px 14px;font:inherit;font-size:15px;margin-bottom:10px}
+.pie .cta{width:100%;justify-content:center}
+.pie .cta[aria-disabled=true]{opacity:.35;pointer-events:none}
+.js .rv{opacity:0;transform:translateY(22px);transition:opacity .7s,transform .7s}
+.js .rv.in{opacity:1;transform:none}
+@media(max-width:1000px){.grid{grid-template-columns:repeat(3,1fr)}.pasos{grid-template-columns:1fr 1fr}}
+@media(max-width:760px){
+  header .wrap{grid-template-columns:auto 1fr;gap:10px}
+  header nav{display:none}
+  .logo{justify-self:start;font-size:21px}
+  .hero{grid-template-columns:1fr;min-height:0}
+  .hero .txt{padding:44px 24px 40px}
+  .hero .img{height:360px}
+  .cats{grid-template-columns:1fr;padding-top:50px}
+  .cat{height:200px}
+  .grid{grid-template-columns:1fr 1fr;gap:24px 12px}
+  .pasos,.envios{grid-template-columns:1fr}
+  .wrap{padding:0 18px}
+}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.js .rv{opacity:1;transform:none}}
+</style>
+<script>document.documentElement.classList.add('js')</script>
+</head>
+<body>
+<div class="demo">Página de demostración hecha por StackRD · <a href="https://wa.me/18293390257?text=Hola%2C%20quiero%20una%20p%C3%A1gina%20web%20para%20mi%20negocio." target="_blank" rel="noopener">¿Quieres una así para tu negocio?</a></div>
+<div class="aviso">Delivery en Santiago y envíos a todo el país</div>
+<header><div class="wrap">
+  <nav><a href="#catalogo" data-f="mujer">Mujer</a><a href="#catalogo" data-f="hombre">Hombre</a><a href="#catalogo" data-f="accesorios">Accesorios</a></nav>
+  <a class="logo" href="#">nativa<i>.</i>studio</a>
+  <button class="carbtn" id="abrir" aria-label="Abrir carrito">Carrito <b id="cnt">0</b></button>
+</div></header>
+
+<section class="hero">
+  <div class="txt rv">
+    <small>Colección nueva · Santiago</small>
+    <div>
+      <h1>Viste<br>tu <span>ritmo.</span></h1>
+      <p>Piezas cómodas y con estilo para el día a día del Caribe. Elige talla y color, arma tu pedido y lo recibes en casa.</p>
+      <a class="cta" href="#catalogo">Ver catálogo <span>→</span></a>
+    </div>
+  </div>
+  <div class="img rv" aria-hidden="true">
+    <svg viewBox="0 0 300 300" fill="none" stroke="#0e0e0e" stroke-width="2.4" stroke-linejoin="round"><path d="M110 40c10 14 25 20 40 20s30-6 40-20l38 18 22 52-34 14-10-20v156H94V104l-10 20-34-14 22-52z" fill="#ff5a36"/><path d="M110 40c6 20 22 32 40 32s34-12 40-32" fill="#e9e4dc"/><path d="M118 150h64M118 175h64" stroke-dasharray="4 6"/></svg>
+    <div class="chip"><b>Camisa Lino Caribe</b>RD$1,650 · S a XL</div>
+  </div>
+</section>
+
+<div class="marquee" aria-hidden="true"><div>Nueva colección <span>✺</span> Lino y algodón <span>✺</span> Hecho para el calor <span>✺</span> Tallas S a XL <span>✺</span> Nueva colección <span>✺</span> Lino y algodón <span>✺</span> Hecho para el calor <span>✺</span> Tallas S a XL <span>✺</span></div></div>
+
+<div class="wrap">
+  <div class="cats">
+    <a class="cat rv" style="background:#f3d9cf" href="#catalogo" data-f="mujer"><svg viewBox="0 0 100 140" fill="none" stroke="#0e0e0e" stroke-width="2"><path d="M38 8l12 10 12-10 8 22-6 14 18 86H18l18-86-6-14z" fill="#fff"/></svg><h3>Mujer</h3><span>Ver →</span></a>
+    <a class="cat rv" style="background:#d6e2ea" href="#catalogo" data-f="hombre"><svg viewBox="0 0 100 140" fill="none" stroke="#0e0e0e" stroke-width="2"><path d="M34 10c4 6 10 9 16 9s12-3 16-9l20 10 10 26-16 6-4-8v86H24V44l-4 8-16-6 10-26z" fill="#fff"/></svg><h3>Hombre</h3><span>Ver →</span></a>
+    <a class="cat rv" style="background:#ece6c9" href="#catalogo" data-f="accesorios"><svg viewBox="0 0 100 140" fill="none" stroke="#0e0e0e" stroke-width="2"><path d="M30 50c0-18 9-30 20-30s20 12 20 30" /><rect x="16" y="50" width="68" height="70" rx="8" fill="#fff"/></svg><h3>Accesorios</h3><span>Ver →</span></a>
+  </div>
+</div>
+
+<section id="catalogo"><div class="wrap">
+  <div class="bar rv">
+    <h2>Catálogo</h2>
+    <div class="filtros" id="filtros">
+      <button class="on" data-f="todo">Todo</button><button data-f="mujer">Mujer</button><button data-f="hombre">Hombre</button><button data-f="accesorios">Accesorios</button>
+      <select id="orden" aria-label="Ordenar"><option value="dest">Destacados</option><option value="asc">Precio: menor a mayor</option><option value="desc">Precio: mayor a menor</option></select>
+    </div>
+  </div>
+  <p class="cuenta" id="cuenta"></p>
+  <div class="grid" id="grid"></div>
+</div></section>
+
+<section class="como"><div class="wrap">
+  <h2 class="rv">Comprar es fácil, sin registrarte</h2>
+  <div class="pasos">
+    <div class="paso rv"><b>01</b><h3>Elige</h3><p>Escoge talla y color y agrega al carrito.</p></div>
+    <div class="paso rv"><b>02</b><h3>Revisa</h3><p>Ajusta cantidades y ve el total al instante.</p></div>
+    <div class="paso rv"><b>03</b><h3>Envía</h3><p>Tu pedido llega a nuestro WhatsApp con todo listo.</p></div>
+    <div class="paso rv"><b>04</b><h3>Recibe</h3><p>Confirmamos disponibilidad, pago y entrega.</p></div>
+  </div>
+  <div class="envios">
+    <div class="rv"><h3>Delivery en Santiago</h3><p>Entregamos en la ciudad. El costo depende del sector y te lo confirmamos al recibir tu pedido.</p></div>
+    <div class="rv"><h3>Retiro y envíos</h3><p>Puedes retirar en tienda o recibir en cualquier provincia por empresa de envíos.</p></div>
+  </div>
+</div></section>
+
+<div class="wrap"><footer><span>© Nativa Studio · Santiago de los Caballeros</span><span>Página hecha por <a href="https://wa.me/18293390257?text=Hola%2C%20vi%20una%20p%C3%A1gina%20hecha%20por%20StackRD%20y%20quiero%20una." target="_blank" rel="noopener">StackRD</a></span></footer></div>
+
+<div class="velo" id="velo"></div>
+<aside class="cajon" id="cajon" aria-label="Carrito">
+  <header><h2>Tu pedido</h2><button class="cerrar" id="cerrar" aria-label="Cerrar">×</button></header>
+  <div class="items" id="items"></div>
+  <div class="pie">
+    <div class="t"><span>Total</span><span id="total">RD$0</span></div>
+    <input id="nombre" placeholder="Tu nombre" aria-label="Tu nombre">
+    <select id="entrega" aria-label="Entrega"><option>Delivery en Santiago</option><option>Retiro en tienda</option><option>Envío a otra provincia</option></select>
+    <a class="cta" id="enviar" target="_blank" rel="noopener" aria-disabled="true">Enviar pedido por WhatsApp</a>
+  </div>
+</aside>
+
+<script>
+const WA='18293390257',wa=m=>'https://wa.me/'+WA+'?text='+encodeURIComponent(m),fmt=n=>'RD$'+n.toLocaleString('en-US');
+const SH={
+ camisa:c=>`<svg viewBox="0 0 100 110" fill="none" stroke="#0e0e0e" stroke-width="1.8" stroke-linejoin="round"><path d="M36 8c3 5 8 8 14 8s11-3 14-8l20 9 9 24-15 6-4-8v65H26V39l-4 8-15-6 9-24z" fill="${c}"/><path d="M50 16v80" stroke-dasharray="2 5"/></svg>`,
+ tshirt:c=>`<svg viewBox="0 0 100 110" fill="none" stroke="#0e0e0e" stroke-width="1.8" stroke-linejoin="round"><path d="M36 10c4 6 9 8 14 8s10-2 14-8l22 10 8 20-15 6-3-6v66H24V40l-3 6-15-6 8-20z" fill="${c}"/></svg>`,
+ vestido:c=>`<svg viewBox="0 0 100 120" fill="none" stroke="#0e0e0e" stroke-width="1.8" stroke-linejoin="round"><path d="M38 6l12 9 12-9 7 20-5 14 20 74H16l20-74-5-14z" fill="${c}"/><path d="M33 44h34"/></svg>`,
+ falda:c=>`<svg viewBox="0 0 100 110" fill="none" stroke="#0e0e0e" stroke-width="1.8" stroke-linejoin="round"><path d="M30 20h40l18 78H12z" fill="${c}"/><path d="M30 20v-8h40v8M40 30l-6 66M60 30l6 66"/></svg>`,
+ pantalon:c=>`<svg viewBox="0 0 100 120" fill="none" stroke="#0e0e0e" stroke-width="1.8" stroke-linejoin="round"><path d="M28 8h44l6 106H56L50 40l-6 74H22z" fill="${c}"/><path d="M28 18h44"/></svg>`,
+ short:c=>`<svg viewBox="0 0 100 100" fill="none" stroke="#0e0e0e" stroke-width="1.8" stroke-linejoin="round"><path d="M22 20h56l8 54H58L50 44l-8 30H14z" fill="${c}"/><path d="M22 30h56"/></svg>`,
+ bolso:c=>`<svg viewBox="0 0 100 100" fill="none" stroke="#0e0e0e" stroke-width="1.8" stroke-linejoin="round"><path d="M34 34c0-14 7-22 16-22s16 8 16 22"/><rect x="16" y="34" width="68" height="56" rx="8" fill="${c}"/></svg>`,
+ gorra:c=>`<svg viewBox="0 0 100 80" fill="none" stroke="#0e0e0e" stroke-width="1.8" stroke-linejoin="round"><path d="M18 52c0-22 14-36 32-36s30 14 30 36z" fill="${c}"/><path d="M80 52c8 0 14 3 16 8H50" fill="${c}"/><circle cx="50" cy="16" r="3" fill="#0e0e0e"/></svg>`,
+ tenis:c=>`<svg viewBox="0 0 110 70" fill="none" stroke="#0e0e0e" stroke-width="1.8" stroke-linejoin="round"><path d="M8 50V24l20-4 10 12 30 6 26 6c8 2 10 6 10 12v4H8z" fill="${c}"/><path d="M8 52h96M40 34l4-4M50 36l4-4M60 38l4-4"/></svg>`,
+ gafas:c=>`<svg viewBox="0 0 110 60" fill="none" stroke="#0e0e0e" stroke-width="2.2"><circle cx="30" cy="32" r="16" fill="${c}"/><circle cx="80" cy="32" r="16" fill="${c}"/><path d="M46 30c6-4 12-4 18 0M14 28L4 20M96 28l10-8"/></svg>`};
+const P=[
+ {n:'Camisa Lino Caribe',c:'hombre',s:'camisa',p:1650,t:['S','M','L','XL'],col:['#ff5a36','#f4f1ea','#8fb3c9'],bg:'#e9e4dc',tag:'Nuevo'},
+ {n:'Vestido Brisa',c:'mujer',s:'vestido',p:2200,t:['XS','S','M','L'],col:['#e9b7a8','#6e8f74','#0e0e0e'],bg:'#f3d9cf',tag:'Nuevo'},
+ {n:'T-shirt Básica Algodón',c:'hombre',s:'tshirt',p:650,t:['S','M','L','XL'],col:['#ffffff','#0e0e0e','#c9b48a'],bg:'#ecebe7'},
+ {n:'Falda Midi Plisada',c:'mujer',s:'falda',p:1450,o:1800,t:['S','M','L'],col:['#d8c27a','#0e0e0e'],bg:'#ece6c9',tag:'Oferta'},
+ {n:'Pantalón Chino',c:'hombre',s:'pantalon',p:1890,t:['30','32','34','36'],col:['#c9b48a','#2f3b4c','#6e8f74'],bg:'#e3e8e0'},
+ {n:'Blusa Amapola',c:'mujer',s:'tshirt',p:990,t:['S','M','L'],col:['#ff5a36','#ffffff'],bg:'#fbe3dc'},
+ {n:'Bolso Tejido Playa',c:'accesorios',s:'bolso',p:1350,t:['Único'],col:['#d8c27a','#e9b7a8'],bg:'#f2ead2',tag:'Nuevo'},
+ {n:'Short Lino',c:'hombre',s:'short',p:1100,t:['S','M','L','XL'],col:['#f4f1ea','#8fb3c9'],bg:'#d6e2ea'},
+ {n:'Gorra Nativa',c:'accesorios',s:'gorra',p:750,t:['Único'],col:['#0e0e0e','#ff5a36','#f4f1ea'],bg:'#ecebe7'},
+ {n:'Pantalón Palazzo',c:'mujer',s:'pantalon',p:1750,o:2100,t:['S','M','L'],col:['#6e8f74','#f4f1ea'],bg:'#e3e8e0',tag:'Oferta'},
+ {n:'Tenis Urbanos',c:'accesorios',s:'tenis',p:2900,t:['38','39','40','41','42'],col:['#ffffff','#0e0e0e'],bg:'#e9e4dc'},
+ {n:'Gafas de Sol Malecón',c:'accesorios',s:'gafas',p:890,t:['Único'],col:['#2f3b4c','#7a4a2a'],bg:'#f3d9cf'},
+ {n:'Vestido Corto Lunares',c:'mujer',s:'vestido',p:1590,t:['XS','S','M'],col:['#0e0e0e','#2f3b4c'],bg:'#d6e2ea'},
+ {n:'Camisa Guayabera Moderna',c:'hombre',s:'camisa',p:2400,t:['M','L','XL'],col:['#ffffff','#c9b48a'],bg:'#f2ead2'}
+];
+const CN={'#ff5a36':'Coral','#f4f1ea':'Crema','#8fb3c9':'Azul cielo','#e9b7a8':'Rosa','#6e8f74':'Verde oliva','#0e0e0e':'Negro','#ffffff':'Blanco','#c9b48a':'Beige','#d8c27a':'Mostaza','#2f3b4c':'Azul marino','#7a4a2a':'Carey'};
+P.forEach((x,i)=>{x.i=i;x.ts=x.t[0];x.cs=0});
+let filtro='todo',orden='dest',cart=[];
+const G=document.getElementById('grid');
+function card(x){return `<article class="prod"><div class="foto" style="background:${x.bg}">${x.tag?`<span class="tag ${x.tag==='Oferta'?'oferta':''}">${x.tag}</span>`:''}${SH[x.s](x.col[x.cs])}</div>
+<h3>${x.n}</h3><div class="pr">${fmt(x.p)}${x.o?`<s>${fmt(x.o)}</s>`:''}</div>
+<div class="opc" role="group" aria-label="Talla">${x.t.map(t=>`<button data-a="t" data-i="${x.i}" data-v="${t}" class="${t===x.ts?'on':''}">${t}</button>`).join('')}</div>
+<div class="cols" role="group" aria-label="Color">${x.col.map((c,k)=>`<button data-a="c" data-i="${x.i}" data-v="${k}" class="${k===x.cs?'on':''}" style="background:${c}" aria-label="${CN[c]}" title="${CN[c]}"></button>`).join('')}</div>
+<button class="add" data-a="add" data-i="${x.i}">Agregar</button></article>`}
+function render(){let l=P.filter(x=>filtro==='todo'||x.c===filtro);if(orden==='asc')l=[...l].sort((a,b)=>a.p-b.p);if(orden==='desc')l=[...l].sort((a,b)=>b.p-a.p);
+G.innerHTML=l.map(card).join('');document.getElementById('cuenta').textContent=l.length+' productos'}
+G.onclick=e=>{const b=e.target.closest('button');if(!b)return;const x=P[b.dataset.i];
+ if(b.dataset.a==='t'){x.ts=b.dataset.v;b.parentNode.querySelectorAll('button').forEach(y=>y.classList.toggle('on',y===b))}
+ if(b.dataset.a==='c'){x.cs=+b.dataset.v;b.parentNode.querySelectorAll('button').forEach(y=>y.classList.toggle('on',y===b));b.closest('.prod').querySelector('.foto svg').outerHTML=SH[x.s](x.col[x.cs])}
+ if(b.dataset.a==='add'){const k=x.i+'|'+x.ts+'|'+x.cs;const f=cart.find(c=>c.k===k);f?f.q++:cart.push({k,x,t:x.ts,c:x.cs,q:1});b.textContent='Agregado ✓';b.classList.add('ok');setTimeout(()=>{b.textContent='Agregar';b.classList.remove('ok')},1200);const cb=document.getElementById('abrir');cb.classList.remove('bump');void cb.offsetWidth;cb.classList.add('bump');pintar()}};
+function setF(f){filtro=f;document.querySelectorAll('#filtros button').forEach(b=>b.classList.toggle('on',b.dataset.f===f));render()}
+document.getElementById('filtros').onclick=e=>{const b=e.target.closest('button');if(b)setF(b.dataset.f)};
+document.querySelectorAll('[data-f]:not(#filtros button)').forEach(a=>a.addEventListener('click',()=>setF(a.dataset.f)));
+document.getElementById('orden').onchange=e=>{orden=e.target.value;render()};
+const cajon=document.getElementById('cajon'),velo=document.getElementById('velo');
+const abrir=v=>{cajon.classList.toggle('on',v);velo.classList.toggle('on',v)};
+document.getElementById('abrir').onclick=()=>abrir(true);document.getElementById('cerrar').onclick=()=>abrir(false);velo.onclick=()=>abrir(false);
+document.addEventListener('keydown',e=>{if(e.key==='Escape')abrir(false)});
+const I=document.getElementById('items');
+I.onclick=e=>{const b=e.target.closest('button');if(!b)return;const c=cart[b.dataset.k];c.q+=+b.dataset.d;if(c.q<1)cart.splice(b.dataset.k,1);pintar()};
+document.getElementById('nombre').oninput=pintar;document.getElementById('entrega').onchange=pintar;
+function pintar(){
+ const n=cart.reduce((a,c)=>a+c.q,0),tot=cart.reduce((a,c)=>a+c.q*c.x.p,0);
+ document.getElementById('cnt').textContent=n;document.getElementById('total').textContent=fmt(tot);
+ I.innerHTML=cart.length?cart.map((c,k)=>`<div class="it"><div class="mini" style="background:${c.x.bg}">${SH[c.x.s](c.x.col[c.c])}</div><div><h4>${c.x.n}</h4><small>Talla ${c.t} · ${CN[c.x.col[c.c]]}</small><div class="qty"><button data-k="${k}" data-d="-1" aria-label="Menos">−</button><b>${c.q}</b><button data-k="${k}" data-d="1" aria-label="Más">+</button></div></div><span class="pr">${fmt(c.q*c.x.p)}</span></div>`).join(''):'<p class="vacio">Tu carrito está vacío.<br>Agrega algo del catálogo.</p>';
+ const b=document.getElementById('enviar'),nom=document.getElementById('nombre').value.trim();
+ b.setAttribute('aria-disabled',cart.length?'false':'true');
+ b.href=wa(`Hola, vi la demo de Nativa Studio y quiero hacer este pedido:\n${cart.map(c=>`• ${c.q} x ${c.x.n} · Talla ${c.t} · ${CN[c.x.col[c.c]]} (${fmt(c.q*c.x.p)})`).join('\n')}\nTotal: ${fmt(tot)}\nEntrega: ${document.getElementById('entrega').value}${nom?'\nNombre: '+nom:''}`);
+}
+render();pintar();
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.1});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
