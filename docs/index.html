@@ -215,6 +215,31 @@ footer a:first-child{margin-left:0}
   footer a{display:inline-block;padding:12px 0}
 }
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
+@media (min-width:1280px){
+  .wrap{max-width:1240px;padding:0 32px}
+  section{padding:96px 0}
+  .hero{padding:150px 0 96px;min-height:min(100vh,900px);display:flex;align-items:center}
+  .hero .wrap{width:100%;gap:64px}
+  .hero h1{font-size:68px}
+  .hero p{font-size:20px;max-width:600px}
+  .hero figure img,.codigo{max-width:440px}
+  .codigo{font-size:14px;padding:16px 20px}
+  h2{font-size:46px}
+  .intro{font-size:18.5px;max-width:720px}
+  nav ul{gap:30px}
+  nav ul a{font-size:14px}
+  .trabajos{gap:32px}
+  .trabajo h3{font-size:20px}
+  .caja h3{font-size:22px}
+  .caja p,.paso p{font-size:16px}
+}
+@media (min-width:1680px){
+  .wrap{max-width:1400px}
+  .hero h1{font-size:78px}
+  .hero p{font-size:21px;max-width:640px}
+  .hero figure img,.codigo{max-width:500px}
+  h2{font-size:52px}
+}
 </style>
 </head>
 <body>
